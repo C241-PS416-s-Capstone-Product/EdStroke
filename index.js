@@ -8,9 +8,10 @@ app.use(express.json());
 app.use('/api/auth', authRoutes);
 
 app.listen(PORT, (error) =>{ 
-	if(!error) 
+	if(!error) {
+		console.log(`Selamat ngoding`);
 		console.log(`Server started on port: http://localhost:${PORT}`);
-	else
+	}else
 		console.log("Error occurred, server can't start", error); 
 	} 
 ); 
