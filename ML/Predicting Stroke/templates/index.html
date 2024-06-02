@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stroke Prediction</title>
+</head>
+<body>
+    <h1>Stroke Prediction Form</h1>
+    <form action="/predict" method="post">
+        Gender: <input type="text" name="gender"><br>
+        Age: <input type="number" name="age"><br>
+        Hypertension: <input type="number" name="hypertension"><br>
+        Heart Disease: <input type="number" name="heart_disease"><br>
+        Ever Married: <input type="text" name="ever_married"><br>
+        Work Type: <input type="text" name="work_type"><br>
+        Residence Type: <input type="text" name="Residence_type"><br>
+        Avg Glucose Level: <input type="number" step="0.01" name="avg_glucose_level"><br>
+        BMI: <input type="number" step="0.01" name="bmi"><br>
+        Smoking Status: <input type="text" name="smoking_status"><br>
+        <input type="submit" value="Predict">
+    </form>
+</body>
+</html>
