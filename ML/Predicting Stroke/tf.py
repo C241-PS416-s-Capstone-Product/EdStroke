@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import tensorflow as tf
+from tensorflow.keras.models import load_model
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, LabelEncoder
 from imblearn.over_sampling import SMOTE
@@ -32,6 +33,7 @@ X_train, X_test, y_train, y_test = train_test_split(X_resampled, y_resampled, te
 
 # Standardize the feature data
 scaler = StandardScaler()
+# scaler = StandardScaler()
 X_train = scaler.fit_transform(X_train)
 X_test = scaler.transform(X_test)
 
@@ -73,6 +75,17 @@ with open("stroke_prediction_model_weights.json", "w") as json_file:
     json.dump(weights_list, json_file)
 
 # Save the entire model to a binary file
-model.save('stroke_prediction_model.bin')
+# model.save('stroke_prediction_model.bin')
+model2 = load_model("stroke_prediction_model.h5")
 
-print("Model architecture, weights, and binary file have been saved.")
+converter = tf.lite.TFLiteConverter.from_keras_model(model2)
+converter.target_spec.supported_ops = [tf.lite.OpsSet.TFLITE_BUILTINS, tf.lite.OpsSet.SELECT_TF_OPS]
+converter._experimental_lower_tensor_list_ops = False  # Disable lowering tensor list ops
+tflite_model = converter.convert()
+
+# Save the converted model to a binary file
+with open("stroke_prediction_model.h5", "wb") as f:
+    f.write(tflite_model)
+
+print("Model successfully converted and saved as stroke_prediction_model.bin")
+# print("Model architecture, weights, and binary file have been saved.")
