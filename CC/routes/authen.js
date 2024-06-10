@@ -73,4 +73,20 @@ router.get('/user', auth, (req, res) => {
     });
 });
 
+router.get('/history', auth, (req, res) => {
+    const userId = req.user.id;
+    
+    db.query(
+        'SELECT * FROM risk_assessment WHERE user_id = ?',
+        [userId],
+        (err, results) => {
+            if (err) {
+                console.error('Error fetching data:', err);
+                return res.status(500).json({ error: 'Error fetching data from the database' });
+            }
+            res.json(results);
+        }
+    );
+});
+
 export default router;
