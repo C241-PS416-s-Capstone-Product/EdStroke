@@ -37,6 +37,7 @@ android {
     buildFeatures {
         viewBinding = true
         buildConfig = true
+        mlModelBinding = true
     }
 }
 
@@ -66,4 +67,14 @@ dependencies {
     implementation(libs.androidx.camera.camera2)
     implementation(libs.camera.lifecycle)
     implementation(libs.camera.view)
+
+    implementation(libs.tensorflow.lite.metadata)
+
+    implementation(libs.play.services.tflite.support)
+    implementation(libs.play.services.tflite.gpu)
+    implementation(libs.tensorflow.lite.task.vision.play.services)
+    implementation(libs.tensorflow.lite.gpu)
+
+    implementation(libs.tensorflow.lite.task.vision)
+
 }
