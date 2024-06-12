@@ -54,7 +54,7 @@ class SignupActivity : AppCompatActivity() {
 
             signupViewModel.registerResult.observe(this) { result ->
                 result?.let {
-                    if (!it.error!!) {
+                    if (it.msg.isNullOrEmpty()) {
                         if (!isFinishing) {
                             AlertDialog.Builder(this).apply {
                                 setTitle(getString(R.string.yeah))

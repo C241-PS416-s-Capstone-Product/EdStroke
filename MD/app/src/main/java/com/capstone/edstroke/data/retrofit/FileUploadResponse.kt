@@ -1,4 +1,4 @@
-package com.example.submissionintermediate.data.retrofit
+package com.capstone.edstroke.data.retrofit
 
 import com.google.gson.annotations.SerializedName
 

@@ -4,7 +4,7 @@ import com.capstone.edstroke.data.pref.UserModel
 import com.capstone.edstroke.data.pref.UserPreference
 import com.capstone.edstroke.data.response.LoginResponse
 import com.capstone.edstroke.data.response.RegisterResponse
-import com.example.submissionintermediate.data.retrofit.UserApiService
+import com.capstone.edstroke.data.retrofit.UserApiService
 import kotlinx.coroutines.flow.Flow
 import retrofit2.HttpException
 
@@ -21,19 +21,19 @@ class UserRepository private constructor(
         return userPreference.getSession()
     }
 
-    suspend fun register(name: String, email: String, password: String): RegisterResponse {
+    suspend fun register(username: String, password: String, email: String): RegisterResponse {
         return try {
-            userApiService.register(name, email, password)
+            userApiService.register(username, password, email)
         } catch (e: HttpException) {
-            RegisterResponse(error = true, message = e.message())
+            RegisterResponse(msg = e.message())
         }
     }
 
-    suspend fun login(email: String, password: String): LoginResponse {
+    suspend fun login(username: String, password: String): LoginResponse {
         return try {
-            userApiService.login(email, password)
+            userApiService.login(username, password)
         } catch (e: HttpException) {
-            LoginResponse(error = true, message = e.message())
+            LoginResponse(msg = e.message())
         }
     }
 

@@ -4,7 +4,7 @@ import android.content.Context
 import com.capstone.edstroke.data.pref.UserPreference
 import com.capstone.edstroke.data.pref.dataStore
 import com.capstone.edstroke.data.repository.UserRepository
-import com.example.submissionintermediate.data.retrofit.ApiConfig
+import com.capstone.edstroke.data.retrofit.ApiConfig
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 

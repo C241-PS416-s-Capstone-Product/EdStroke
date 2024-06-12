@@ -53,15 +53,16 @@ class LoginActivity : AppCompatActivity() {
             loginViewModel.login(email, password)
             loginViewModel.loginResult.observe(this) { result ->
                 result?.let {
-                    if (!it.error!!) {
-                        val name = it.loginResult?.name
-                        val userId = it.loginResult?.userId
-                        val token = it.loginResult?.token
+                    if (it.msg.isNullOrEmpty()) {
+                        val token = it.token
+                        val userId = it.userResult?.id.toString()
+                        val username = it.userResult?.username
+                        val email = it.userResult?.email
                         loginViewModel.saveSession(
                             UserModel(
-                                name!!,
+                                username!!,
                                 userId!!,
-                                email,
+                                email!!,
                                 token!!,
                                 true
                             )

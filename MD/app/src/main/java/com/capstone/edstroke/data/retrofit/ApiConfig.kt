@@ -1,4 +1,4 @@
-package com.example.submissionintermediate.data.retrofit
+package com.capstone.edstroke.data.retrofit
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -25,7 +25,7 @@ object ApiConfig {
             .build()
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://story-api.dicoding.dev/v1/")
+            .baseUrl("https://backend-server-esmhw7j32a-et.a.run.app/api/auth/")
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()
@@ -33,7 +33,7 @@ object ApiConfig {
         return retrofit.create(UserApiService::class.java)
     }
 
-    fun getStoryApiService(): StoryApiService {
+    fun getRiskApiService(): RiskApiService {
         val client = OkHttpClient.Builder()
             .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
             .addInterceptor { chain ->
@@ -46,11 +46,11 @@ object ApiConfig {
             .build()
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://story-api.dicoding.dev/v1/")
+            .baseUrl("https://backend-server-esmhw7j32a-et.a.run.app/api/predict/")
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()
 
-        return retrofit.create(StoryApiService::class.java)
+        return retrofit.create(RiskApiService::class.java)
     }
 }

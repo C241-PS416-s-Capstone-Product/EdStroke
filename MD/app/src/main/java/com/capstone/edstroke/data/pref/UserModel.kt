@@ -1,7 +1,7 @@
 package com.capstone.edstroke.data.pref
 
 data class UserModel(
-    val name: String,
+    val username: String,
     val userId: String,
     val email: String,
     val token: String,

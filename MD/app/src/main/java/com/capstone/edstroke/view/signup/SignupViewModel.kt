@@ -17,13 +17,13 @@ class SignupViewModel(private val repository: UserRepository) : ViewModel() {
     private val _registerResult = MutableLiveData<RegisterResponse>()
     val registerResult: LiveData<RegisterResponse> = _registerResult
 
-    fun register(name: String, email: String, password: String) {
+    fun register(username: String, password: String, email: String,) {
         viewModelScope.launch {
             try {
                 //get success message
-                val result = repository.register(name, email, password)
+                val result = repository.register(username, password, email)
                 _registerResult.value = result
-                val message = result.message
+                val message = result.msg
                 Log.d("RegisterSuccess", message.toString())
             } catch (e: HttpException) {
                 //get error message

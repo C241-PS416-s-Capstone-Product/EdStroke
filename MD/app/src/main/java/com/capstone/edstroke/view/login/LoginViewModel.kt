@@ -10,7 +10,7 @@ import com.capstone.edstroke.data.repository.UserRepository
 import com.capstone.edstroke.data.pref.UserModel
 import com.capstone.edstroke.data.response.ErrorResponse
 import com.capstone.edstroke.data.response.LoginResponse
-import com.example.submissionintermediate.data.retrofit.ApiConfig
+import com.capstone.edstroke.data.retrofit.ApiConfig
 import com.google.gson.Gson
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
@@ -32,11 +32,11 @@ class LoginViewModel(
                 //get success message
                 val result = userRepository.login(email, password)
                 _loginResult.value = result
-                val message = result.message
+                val message = result.msg
                 Log.d("LoginSuccess", message.toString())
 
                 // Set token and update ApiService
-                val token = result.loginResult?.token ?: return@launch
+                val token = result.token ?: return@launch
                 ApiConfig.setToken(token)
                 userRepository.updateApiService(ApiConfig.getUserApiService())
 
