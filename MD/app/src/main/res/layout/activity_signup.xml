@@ -1,45 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true"
         tools:context=".view.signup.SignupActivity">
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
-            app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline2"
-            app:srcCompat="@drawable/image_signup" />
-
         <TextView
             android:id="@+id/titleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="32dp"
+            android:alpha="100"
+            android:gravity="center"
+            android:text="@string/title_signup_page"
+            android:textColor="@color/blue"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/guidelineHorizontal"
+            tools:alpha="100" />
+
+        <TextView
+            android:id="@+id/descTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="32dp"
-            android:alpha="0"
-            android:text="@string/title_signup_page"
+            android:alpha="100"
+            android:gravity="center"
+            android:text="@string/desc_signup_page"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guidelineHorizontal"
+            app:layout_constraintTop_toBottomOf="@+id/titleTextView"
             tools:alpha="100" />
 
         <TextView
@@ -47,12 +55,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="32dp"
             android:alpha="0"
             android:text="@string/username"
             android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/titleTextView"
+            app:layout_constraintTop_toBottomOf="@+id/descTextView"
             tools:alpha="100" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -63,6 +71,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
             android:alpha="0"
+            android:hint="@string/username_hint"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/usernameTextView"
@@ -100,6 +109,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
             android:alpha="0"
+            android:hint="@string/email_hint"
             app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -140,6 +150,7 @@
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="32dp"
             android:alpha="0"
+            android:hint="@string/password_hint"
             app:endIconMode="password_toggle"
             app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
@@ -167,7 +178,7 @@
             android:layout_marginTop="32dp"
             android:layout_marginEnd="32dp"
             android:alpha="0"
-            android:backgroundTint="@color/navy"
+            android:backgroundTint="@color/blue"
             android:text="@string/signup"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -178,18 +189,7 @@
             android:id="@+id/guidelineHorizontal"
             android:layout_width="wrap_content"
             android:layout_height="64dp"
-            android:alpha="0"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintGuide_percent="0.30191082"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:alpha="100" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline2"
-            android:layout_width="wrap_content"
-            android:layout_height="64dp"
-            android:alpha="0"
+            android:alpha="100"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.1"
             tools:alpha="100" />

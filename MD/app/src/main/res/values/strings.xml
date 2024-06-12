@@ -12,12 +12,14 @@
     <string name="login">Login</string>
     <string name="message_welcome_page">Want to share your knowledge about coding with others? Or do you want to talk about your coding? Share your story with us!</string>
     <string name="title_welcome_page">Welcome to Dicoding Story!</string>
-    <string name="title_signup_page">Please fill out the details!</string>
+    <string name="title_signup_page">Create Account</string>
+    <string name="desc_signup_page">Start Your Stroke Recovery Now: Create Your Free Account</string>
+    <string name="title_login_page">Login here</string>
+    <string name="desc_login_page">Welcome back you’ve been missed!</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="username">Username</string>
     <string name="message_login_page">Please fill the credentials.</string>
-    <string name="title_login_page">Are you ready to share your story?</string>
     <string name="story_name">Dicoding</string>
     <string name="story_description">Want to share your knowledge about coding with others? Or do you want to talk about your coding? Share your story with us!</string>
     <string name="message_main_page">Share your story with us.</string>
@@ -28,11 +30,11 @@
     <string name="write_description">Write a description…</string>
     <string name="photo_preview">Photo preview</string>
     <string name="yeah">Yeah!</string>
-    <string name="login_alert">You have successfully logged in. Can\'t wait to share your story, huh?</string>
+    <string name="login_alert">You have successfully logged in.</string>
     <string name="next">Next</string>
     <string name="oops">Oops!</string>
     <string name="incorrect_credentials">Incorrect email or password.</string>
-    <string name="signup_success">The account %1$s is ready. Come on, log in and learn to code.</string>
+    <string name="signup_success">The account %1$s is ready. Come on, log in!</string>
     <string name="signup_failed">The account %1$s already exists.</string>
     <string name="ok">OK</string>
     <string name="empty_description">Description cannot be empty</string>
@@ -43,4 +45,7 @@
     <string name="desc_menu_1">Take control of your health.\nJoin us to assess stroke risk.</string>
     <string name="title_menu_2">Stroke Exercise</string>
     <string name="desc_menu_2"><![CDATA[Join to unlock personalized stroke exercise plans & expert guidance.]]></string>
+    <string name="username_hint">Insert your username here</string>
+    <string name="email_hint">Insert your email here</string>
+    <string name="password_hint">Insert your password here</string>
 </resources>

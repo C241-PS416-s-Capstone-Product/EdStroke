@@ -101,15 +101,9 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun playAnimation() {
-        ObjectAnimator.ofFloat(binding.imageView, View.TRANSLATION_X, -30f, 30f).apply {
-            duration = 6000
-            repeatCount = ObjectAnimator.INFINITE
-            repeatMode = ObjectAnimator.REVERSE
-        }.start()
-
         val title = ObjectAnimator.ofFloat(binding.titleTextView, View.ALPHA, 1f).setDuration(100)
-        val message =
-            ObjectAnimator.ofFloat(binding.messageTextView, View.ALPHA, 1f).setDuration(100)
+        val desc =
+            ObjectAnimator.ofFloat(binding.descTextView, View.ALPHA, 1f).setDuration(100)
         val username = ObjectAnimator.ofFloat(binding.usernameTextView, View.ALPHA, 1f).setDuration(100)
         val usernameedit =
             ObjectAnimator.ofFloat(binding.usernameEditTextLayout, View.ALPHA, 1f).setDuration(100)
@@ -120,7 +114,7 @@ class LoginActivity : AppCompatActivity() {
         val login = ObjectAnimator.ofFloat(binding.loginButton, View.ALPHA, 1f).setDuration(100)
 
         AnimatorSet().apply {
-            playSequentially(title, message, username, usernameedit, password, passwordedit, login)
+            playSequentially(title, desc, username, usernameedit, password, passwordedit, login)
             startDelay = 100
             start()
         }
