@@ -8,6 +8,8 @@ import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.capstone.edstroke.data.repository.UserRepository
 import com.capstone.edstroke.data.pref.UserModel
+import com.capstone.edstroke.data.request.LoginRequest
+import com.capstone.edstroke.data.request.RegisterRequest
 import com.capstone.edstroke.data.response.ErrorResponse
 import com.capstone.edstroke.data.response.LoginResponse
 import com.capstone.edstroke.data.retrofit.ApiConfig
@@ -26,11 +28,12 @@ class LoginViewModel(
         return userRepository.getSession().asLiveData()
     }
 
-    fun login(email: String, password: String) {
+    fun login(username: String, password: String) {
         viewModelScope.launch {
             try {
+                val request = LoginRequest(username, password)
                 //get success message
-                val result = userRepository.login(email, password)
+                val result = userRepository.login(request)
                 _loginResult.value = result
                 val message = result.msg
                 Log.d("LoginSuccess", message.toString())

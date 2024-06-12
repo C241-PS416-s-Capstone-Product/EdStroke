@@ -46,15 +46,15 @@ class SignupActivity : AppCompatActivity() {
 
     private fun setupAction() {
         binding.signupButton.setOnClickListener {
-            val name = binding.nameEditText.text.toString()
-            val email = binding.emailEditText.text.toString()
+            val username = binding.usernameEditText.text.toString()
             val password = binding.passwordEditText.text.toString()
+            val email = binding.emailEditText.text.toString()
 
-            signupViewModel.register(name, email, password)
+            signupViewModel.register(username, password, email)
 
             signupViewModel.registerResult.observe(this) { result ->
                 result?.let {
-                    if (it.msg.isNullOrEmpty()) {
+                    if (it.msg == "User registered successfully") {
                         if (!isFinishing) {
                             AlertDialog.Builder(this).apply {
                                 setTitle(getString(R.string.yeah))
@@ -92,9 +92,9 @@ class SignupActivity : AppCompatActivity() {
         }.start()
 
         val title = ObjectAnimator.ofFloat(binding.titleTextView, View.ALPHA, 1f).setDuration(100)
-        val name = ObjectAnimator.ofFloat(binding.nameTextView, View.ALPHA, 1f).setDuration(100)
-        val nameedit =
-            ObjectAnimator.ofFloat(binding.nameEditTextLayout, View.ALPHA, 1f).setDuration(100)
+        val username = ObjectAnimator.ofFloat(binding.usernameTextView, View.ALPHA, 1f).setDuration(100)
+        val usernameedit =
+            ObjectAnimator.ofFloat(binding.usernameEditTextLayout, View.ALPHA, 1f).setDuration(100)
         val email = ObjectAnimator.ofFloat(binding.emailTextView, View.ALPHA, 1f).setDuration(100)
         val emailedit =
             ObjectAnimator.ofFloat(binding.emailEditTextLayout, View.ALPHA, 1f).setDuration(100)
@@ -107,8 +107,8 @@ class SignupActivity : AppCompatActivity() {
         AnimatorSet().apply {
             playSequentially(
                 title,
-                name,
-                nameedit,
+                username,
+                usernameedit,
                 email,
                 emailedit,
                 password,

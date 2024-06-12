@@ -53,20 +53,20 @@
         tools:alpha="100" />
 
     <TextView
-        android:id="@+id/emailTextView"
+        android:id="@+id/usernameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="24dp"
         android:alpha="0"
-        android:text="@string/email"
+        android:text="@string/username"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/messageTextView"
         tools:alpha="100" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/emailEditTextLayout"
+        android:id="@+id/usernameEditTextLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -76,17 +76,17 @@
         app:errorEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailTextView"
-        app:startIconDrawable="@drawable/ic_baseline_email_24"
+        app:layout_constraintTop_toBottomOf="@+id/usernameTextView"
+        app:startIconDrawable="@drawable/ic_baseline_person_24"
         tools:alpha="100">
 
         <com.capstone.edstroke.view.custom.EmailEditText
-            android:id="@+id/emailEditText"
+            android:id="@+id/usernameEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:alpha="1"
             android:ems="10"
-            android:inputType="textEmailAddress"
+            android:inputType="textVisiblePassword|textNoSuggestions"
             app:errorEnabled="true"
             tools:alpha="100"
             tools:ignore="SpeakableTextPresentCheck" />
@@ -102,7 +102,7 @@
         android:text="@string/password"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailEditTextLayout"
+        app:layout_constraintTop_toBottomOf="@+id/usernameEditTextLayout"
         tools:alpha="100" />
 
     <com.google.android.material.textfield.TextInputLayout

@@ -1,28 +1,26 @@
 package com.capstone.edstroke.data.retrofit
 
+import com.capstone.edstroke.data.request.LoginRequest
+import com.capstone.edstroke.data.request.RegisterRequest
 import com.capstone.edstroke.data.response.HistoryResponse
 import com.capstone.edstroke.data.response.LoginResponse
 import com.capstone.edstroke.data.response.RegisterResponse
 import com.capstone.edstroke.data.response.UserResponse
+import retrofit2.http.Body
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
 import retrofit2.http.GET
 
 interface UserApiService {
-    @FormUrlEncoded
     @POST("register")
     suspend fun register(
-        @Field("username") username: String,
-        @Field("password") password: String,
-        @Field("email") email: String,
+        @Body registerRequest: RegisterRequest
     ): RegisterResponse
 
-    @FormUrlEncoded
     @POST("login")
     suspend fun login(
-        @Field("username") username: String,
-        @Field("password") password: String
+        @Body loginRequest: LoginRequest
     ): LoginResponse
 
     @GET("user")

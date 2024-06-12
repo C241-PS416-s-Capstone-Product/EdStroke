@@ -15,9 +15,9 @@
     <string name="title_signup_page">Please fill out the details!</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
+    <string name="username">Username</string>
     <string name="message_login_page">Please fill the credentials.</string>
     <string name="title_login_page">Are you ready to share your story?</string>
-    <string name="name">Name</string>
     <string name="story_name">Dicoding</string>
     <string name="story_description">Want to share your knowledge about coding with others? Or do you want to talk about your coding? Share your story with us!</string>
     <string name="message_main_page">Share your story with us.</string>
@@ -39,4 +39,8 @@
     <string name="title_activity_maps" translatable="false">MapsActivity</string>
     <string name="retry">Retry</string>
     <string name="maps">Maps</string>
+    <string name="title_menu_1">Stroke Risk Prediction</string>
+    <string name="desc_menu_1">Take control of your health.\nJoin us to assess stroke risk.</string>
+    <string name="title_menu_2">Stroke Exercise</string>
+    <string name="desc_menu_2"><![CDATA[Join to unlock personalized stroke exercise plans & expert guidance.]]></string>
 </resources>

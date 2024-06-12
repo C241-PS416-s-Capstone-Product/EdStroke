@@ -2,6 +2,8 @@ package com.capstone.edstroke.data.repository
 
 import com.capstone.edstroke.data.pref.UserModel
 import com.capstone.edstroke.data.pref.UserPreference
+import com.capstone.edstroke.data.request.LoginRequest
+import com.capstone.edstroke.data.request.RegisterRequest
 import com.capstone.edstroke.data.response.LoginResponse
 import com.capstone.edstroke.data.response.RegisterResponse
 import com.capstone.edstroke.data.retrofit.UserApiService
@@ -21,17 +23,17 @@ class UserRepository private constructor(
         return userPreference.getSession()
     }
 
-    suspend fun register(username: String, password: String, email: String): RegisterResponse {
+    suspend fun register(request: RegisterRequest): RegisterResponse {
         return try {
-            userApiService.register(username, password, email)
+            userApiService.register(request)
         } catch (e: HttpException) {
             RegisterResponse(msg = e.message())
         }
     }
 
-    suspend fun login(username: String, password: String): LoginResponse {
+    suspend fun login(request: LoginRequest): LoginResponse {
         return try {
-            userApiService.login(username, password)
+            userApiService.login(request)
         } catch (e: HttpException) {
             LoginResponse(msg = e.message())
         }

@@ -48,9 +48,9 @@ class LoginActivity : AppCompatActivity() {
 
     private fun setupAction() {
         binding.loginButton.setOnClickListener {
-            val email = binding.emailEditText.text.toString()
+            val username = binding.usernameEditText.text.toString()
             val password = binding.passwordEditText.text.toString()
-            loginViewModel.login(email, password)
+            loginViewModel.login(username, password)
             loginViewModel.loginResult.observe(this) { result ->
                 result?.let {
                     if (it.msg.isNullOrEmpty()) {
@@ -67,8 +67,6 @@ class LoginActivity : AppCompatActivity() {
                                 true
                             )
                         )
-                        loginViewModel.getSession().observe(this) { user ->
-                        }
                         if (!isFinishing) {
                             AlertDialog.Builder(this).apply {
                                 setTitle(getString(R.string.yeah))
@@ -112,9 +110,9 @@ class LoginActivity : AppCompatActivity() {
         val title = ObjectAnimator.ofFloat(binding.titleTextView, View.ALPHA, 1f).setDuration(100)
         val message =
             ObjectAnimator.ofFloat(binding.messageTextView, View.ALPHA, 1f).setDuration(100)
-        val email = ObjectAnimator.ofFloat(binding.emailTextView, View.ALPHA, 1f).setDuration(100)
-        val emailedit =
-            ObjectAnimator.ofFloat(binding.emailEditTextLayout, View.ALPHA, 1f).setDuration(100)
+        val username = ObjectAnimator.ofFloat(binding.usernameTextView, View.ALPHA, 1f).setDuration(100)
+        val usernameedit =
+            ObjectAnimator.ofFloat(binding.usernameEditTextLayout, View.ALPHA, 1f).setDuration(100)
         val password =
             ObjectAnimator.ofFloat(binding.passwordTextView, View.ALPHA, 1f).setDuration(100)
         val passwordedit =
@@ -122,7 +120,7 @@ class LoginActivity : AppCompatActivity() {
         val login = ObjectAnimator.ofFloat(binding.loginButton, View.ALPHA, 1f).setDuration(100)
 
         AnimatorSet().apply {
-            playSequentially(title, message, email, emailedit, password, passwordedit, login)
+            playSequentially(title, message, username, usernameedit, password, passwordedit, login)
             startDelay = 100
             start()
         }
