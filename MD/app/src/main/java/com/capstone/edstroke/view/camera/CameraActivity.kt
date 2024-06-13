@@ -1,5 +1,6 @@
 package com.capstone.edstroke.view.camera
 
+import ObjectDetectorHelper
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -82,6 +83,11 @@ class CameraActivity : AppCompatActivity() {
                         // Force a redraw
                         binding.overlay.invalidate()
                     }
+                }
+            },
+            onError = {
+                runOnUiThread {
+                    Toast.makeText(this@CameraActivity, it, Toast.LENGTH_SHORT).show()
                 }
             }
         )

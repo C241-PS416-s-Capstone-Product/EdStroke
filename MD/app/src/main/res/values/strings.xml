@@ -33,6 +33,7 @@
     <string name="login_alert">You have successfully logged in.</string>
     <string name="next">Next</string>
     <string name="oops">Oops!</string>
+    <string name="firebaseml_model_download_failed">Model download failed, please check your connection.</string>
     <string name="incorrect_credentials">Incorrect email or password.</string>
     <string name="signup_success">The account %1$s is ready. Come on, log in!</string>
     <string name="signup_failed">The account %1$s already exists.</string>

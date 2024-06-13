@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "767865897505",
+    "project_id": "capspro-c241-ps416",
+    "storage_bucket": "capspro-c241-ps416.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:767865897505:android:dc61b5a26b8c19593c5960",
+        "android_client_info": {
+          "package_name": "com.capstone.edstroke"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCyTmnDVaH0VxJpmsPEeOLcFtOxZm1MjjU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
