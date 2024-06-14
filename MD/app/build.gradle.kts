@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId = "com.capstone.edstroke"
-        minSdk = 21
+        minSdk = 24
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -50,6 +50,7 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.firebase.ml.modeldownloader.ktx)
+    implementation(libs.common)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -83,7 +84,7 @@ dependencies {
 
     // Import the Firebase BoM
     implementation(platform(libs.firebase.bom))
-
+    implementation(libs.firebase.ml.modeldownloader)
 
     // TODO: Add the dependencies for Firebase products you want to use
     // When using the BoM, don't specify versions in Firebase dependencies
