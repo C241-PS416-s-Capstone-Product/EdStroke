@@ -89,4 +89,26 @@ router.get('/history', auth, (req, res) => {
     );
 });
 
+router.put('/update-profile', auth, (req, res) => {
+    const { username, email } = req.body;
+    const userId = req.user.id;
+
+    if (!username && !email) {
+        return res.status(400).json({ msg: 'Please enter a new username or email' });
+    }
+
+    const updates = {};
+    if (username) updates.username = username;
+    if (email) updates.email = email;
+
+    db.query('UPDATE users SET ? WHERE id = ?', [updates, userId], (err, result) => {
+        if (err) {
+            console.error('Error updating profile:', err);
+            return res.status(500).json({ error: 'Error updating profile' });
+        }
+
+        res.json({ msg: 'Profile updated successfully' });
+    });
+});
+
 export default router;
