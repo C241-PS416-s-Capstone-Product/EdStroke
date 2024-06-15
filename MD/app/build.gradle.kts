@@ -75,6 +75,7 @@ dependencies {
 
     implementation(libs.play.services.tflite.support)
     implementation(libs.play.services.tflite.gpu)
+    implementation(libs.play.services.tasks)
     implementation(libs.tensorflow.lite.task.vision.play.services)
     implementation(libs.tensorflow.lite.gpu)
 
