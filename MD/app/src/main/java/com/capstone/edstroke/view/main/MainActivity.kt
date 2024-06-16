@@ -20,6 +20,8 @@ import com.capstone.edstroke.view.getImageUri
 import com.capstone.edstroke.view.result.ResultActivity
 import com.capstone.edstroke.view.camera.CameraActivity
 import com.capstone.edstroke.view.camera.CameraActivity.Companion.CAMERAX_RESULT
+import com.capstone.edstroke.view.profile.ProfileActivity
+import com.capstone.edstroke.view.risk_screening.RiskScreeningActivity
 import com.capstone.edstroke.view.welcome.WelcomeActivity
 
 class MainActivity : AppCompatActivity() {
@@ -66,6 +68,15 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.galleryButton.setOnClickListener { startGallery() }
+        binding.btnProfile.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+        }
+        binding.btnRiskScreening.setOnClickListener {
+            val intent = Intent(this, RiskScreeningActivity::class.java)
+            startActivity(intent)
+        }
+
         binding.cameraButton.setOnClickListener { startCamera() }
         binding.cameraXButton.setOnClickListener { startCameraX() }
         binding.analyzeButton.setOnClickListener {

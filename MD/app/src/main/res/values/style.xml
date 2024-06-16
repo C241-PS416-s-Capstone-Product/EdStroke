@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="br40">
+        <item name="cornerSizeBottomRight">40dp</item>
+    </style>
+</resources>

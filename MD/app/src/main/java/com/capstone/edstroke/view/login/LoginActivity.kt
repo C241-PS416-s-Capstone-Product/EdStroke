@@ -48,6 +48,20 @@ class LoginActivity : AppCompatActivity() {
 
     private fun setupAction() {
         binding.loginButton.setOnClickListener {
+//            loginViewModel.saveSession(
+//                            UserModel(
+//                                "testing",
+//                                "10",
+//                                "testing@example.com",
+//                                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImlhdCI6MTcxODQ3OTYzNiwiZXhwIjoxNzE4NDgzMjM2fQ.Gshw9eB-Xgh_Q8xRGYaeD3VslRbciI1iccMrZFP36c4",
+//                                true
+//                            )
+//                        )
+//            val intent = Intent(this@LoginActivity, MainActivity::class.java)
+//            intent.flags =
+//                Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+//            startActivity(intent)
+//            finish()
             val username = binding.usernameEditText.text.toString()
             val password = binding.passwordEditText.text.toString()
             loginViewModel.login(username, password)
@@ -104,7 +118,8 @@ class LoginActivity : AppCompatActivity() {
         val title = ObjectAnimator.ofFloat(binding.titleTextView, View.ALPHA, 1f).setDuration(100)
         val desc =
             ObjectAnimator.ofFloat(binding.descTextView, View.ALPHA, 1f).setDuration(100)
-        val username = ObjectAnimator.ofFloat(binding.usernameTextView, View.ALPHA, 1f).setDuration(100)
+        val username =
+            ObjectAnimator.ofFloat(binding.usernameTextView, View.ALPHA, 1f).setDuration(100)
         val usernameedit =
             ObjectAnimator.ofFloat(binding.usernameEditTextLayout, View.ALPHA, 1f).setDuration(100)
         val password =
