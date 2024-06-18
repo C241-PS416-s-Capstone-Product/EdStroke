@@ -2,7 +2,10 @@ package com.capstone.edstroke.view.camera
 
 import android.content.Context
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.ImageFormat
+import android.graphics.Rect
+import android.graphics.YuvImage
 import android.os.Build
 import android.os.SystemClock
 import android.util.Log
@@ -26,10 +29,11 @@ import org.tensorflow.lite.support.image.ops.ResizeOp
 import org.tensorflow.lite.support.image.ops.Rot90Op
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
 import org.tensorflow.lite.task.gms.vision.TfLiteVision
+import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.IOException
 
-class PoseEstimationHelper(
+class PoseEstimationHelperBackup(
     val context: Context,
     val detectorListener: DetectorListener?,
     private val onError: (String) -> Unit,
@@ -38,11 +42,6 @@ class PoseEstimationHelper(
     private var initializationTask: Task<Void>? = null
 
     init {
-        initializeTfLite()
-    }
-
-    @Synchronized
-    private fun initializeTfLite() {
         initializationTask = TfLiteGpu.isGpuDelegateAvailable(context).onSuccessTask { gpuAvailable ->
             val optionsBuilder = TfLiteInitializationOptions.builder()
             if (gpuAvailable) {
@@ -132,7 +131,22 @@ class PoseEstimationHelper(
             Log.d(TAG, "Image height: ${image.height}")
             Log.d(TAG, "Image planes: ${image.planes.size}")
 
+            if (image.format != ImageFormat.YUV_420_888 && image.format != ImageFormat.JPEG && image.format != ImageFormat.RGB_565) {
+                val errorMsg = "Unsupported image format: ${image.format}"
+                Log.e(TAG, errorMsg)
+                detectorListener?.onError(errorMsg)
+                onError(errorMsg)
+                image.close()
+                return@addOnSuccessListener
+            }
+
             try {
+                val bitmap = toBitmap(image)
+//                val resizedBitmap = Bitmap.createScaledBitmap(bitmap, 192, 192, true)
+
+//                val tensorImage = TensorImage(DataType.FLOAT32)
+//                tensorImage.load(bitmap)
+
                 // ImageProcessor untuk pemrosesan gambar
                 val imageProcessor = ImageProcessor.Builder()
                     .add(ResizeOp(192, 192, ResizeOp.ResizeMethod.BILINEAR))
@@ -179,6 +193,48 @@ class PoseEstimationHelper(
         image.use { bitmapBuffer.copyPixelsFromBuffer(image.planes[0].buffer) }
         image.close()
         return bitmapBuffer
+//        Log.d(TAG, "Image format: ${image.format}")
+//        return when (image.format) {
+//            ImageFormat.YUV_420_888 -> {
+//                val yBuffer = image.planes[0].buffer
+//                val uBuffer = image.planes[1].buffer
+//                val vBuffer = image.planes[2].buffer
+//
+//                val ySize = yBuffer.remaining()
+//                val uSize = uBuffer.remaining()
+//                val vSize = vBuffer.remaining()
+//
+//                val nv21 = ByteArray(ySize + uSize + vSize)
+//
+//                yBuffer.get(nv21, 0, ySize)
+//                vBuffer.get(nv21, ySize, vSize)
+//                uBuffer.get(nv21, ySize + vSize, uSize)
+//
+//                val yuvImage = YuvImage(nv21, ImageFormat.NV21, image.width, image.height, null)
+//                val out = ByteArrayOutputStream()
+//                yuvImage.compressToJpeg(Rect(0, 0, image.width, image.height), 100, out)
+//                val yuvByteArray = out.toByteArray()
+//                BitmapFactory.decodeByteArray(yuvByteArray, 0, yuvByteArray.size)
+//            }
+//            ImageFormat.JPEG -> {
+//                val buffer = image.planes[0].buffer
+//                Log.d(TAG, "JPEG buffer size: ${buffer.remaining()}")
+//                val bytes = ByteArray(buffer.remaining())
+//                buffer.get(bytes)
+//                BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
+//            }
+//            ImageFormat.RGB_565 -> {
+//                val buffer = image.planes[0].buffer
+//                val bytes = ByteArray(buffer.remaining())
+//                buffer.get(bytes)
+//                BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
+//            }
+//            else -> {
+//                val errorMsg = "Unsupported image format: ${image.format}"
+//                Log.e(TAG, errorMsg)
+//                throw IllegalArgumentException(errorMsg)
+//            }
+//        }
     }
 
     private fun extractKeypoints(outputBuffer: TensorBuffer): List<Keypoint> {
@@ -209,3 +265,5 @@ class PoseEstimationHelper(
         private const val TAG = "PoseEstimationHelper"
     }
 }
+
+

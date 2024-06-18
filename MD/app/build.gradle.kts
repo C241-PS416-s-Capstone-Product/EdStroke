@@ -71,6 +71,7 @@ dependencies {
     implementation(libs.camera.lifecycle)
     implementation(libs.camera.view)
 
+    implementation(libs.tensorflow.lite)
     implementation(libs.tensorflow.lite.metadata)
 
     implementation(libs.play.services.tflite.support)

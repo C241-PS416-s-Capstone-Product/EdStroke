@@ -42,14 +42,8 @@ class CameraActivity : AppCompatActivity() {
                 override fun onResults(keypoints: List<PoseEstimationHelper.Keypoint>?, inferenceTime: Long) {
                     runOnUiThread {
                         keypoints?.let {
-                            val displayResult = it.joinToString("\n") { keypoint ->
-                                "Keypoint: (${keypoint.x}, ${keypoint.y}) Score: ${NumberFormat.getPercentInstance().format(keypoint.score)}"
-                            }
-                            binding.tvResult.text = displayResult
-                            binding.tvInferenceTime.text = "$inferenceTime ms"
-                        } ?: run {
-                            binding.tvResult.text = ""
-                            binding.tvInferenceTime.text = ""
+                            val validKeypoints = it.filter { it.score > 0.5 }  // Filter keypoints dengan score > 0.5
+                            binding.keypointsOverlay.updateKeypoints(validKeypoints)
                         }
                     }
                 }
@@ -60,6 +54,7 @@ class CameraActivity : AppCompatActivity() {
                 }
             }
         )
+
     }
 
     public override fun onResume() {
@@ -107,6 +102,7 @@ class CameraActivity : AppCompatActivity() {
             }
         }, ContextCompat.getMainExecutor(this))
     }
+
 
     private fun hideSystemUI() {
         @Suppress("DEPRECATION")
