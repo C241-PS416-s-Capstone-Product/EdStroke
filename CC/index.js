@@ -1,6 +1,7 @@
 import express from "express";
 import authRoutes from './routes/authen.js';
 import predictRoutes from './routes/predict.js';
+import strokeRoutes from './routes/stroke.js'
 
 const app = express(); 
 const PORT = 3000; 
@@ -8,6 +9,7 @@ const PORT = 3000;
 app.use(express.json());
 app.use('/api/auth', authRoutes);
 app.use('/api/predict', predictRoutes);
+app.use('/api/advice', strokeRoutes);
 
 app.listen(PORT, (error) => { 
     if (!error) {
