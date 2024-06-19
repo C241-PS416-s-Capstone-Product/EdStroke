@@ -1,5 +1,6 @@
 package com.capstone.edstroke.view.camera
 
+import android.app.ProgressDialog
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -15,14 +16,18 @@ import androidx.camera.core.resolutionselector.ResolutionSelector
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import com.capstone.edstroke.databinding.ActivityCameraBinding
-import com.google.mediapipe.tasks.components.containers.Classifications
-import java.text.NumberFormat
+import com.capstone.edstroke.view.riskexercise.RiskExerciseHelper
+import kotlinx.coroutines.*
 import java.util.concurrent.Executors
 
 class CameraActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCameraBinding
     private var cameraSelector: CameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
     private lateinit var poseEstimationHelper: PoseEstimationHelper
+    private lateinit var riskExerciseHelper: RiskExerciseHelper
+    private val job = Job()
+    private val scope = CoroutineScope(Dispatchers.Main + job)
+    private lateinit var progressDialog: ProgressDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,14 +44,23 @@ class CameraActivity : AppCompatActivity() {
                     }
                 }
 
+                // Di dalam PoseEstimationHelper.DetectorListener.onResults
                 override fun onResults(keypoints: List<PoseEstimationHelper.Keypoint>?, inferenceTime: Long) {
                     runOnUiThread {
                         keypoints?.let {
-                            val validKeypoints = it.filter { it.score > 0.5 }  // Filter keypoints dengan score > 0.5
-                            binding.keypointsOverlay.updateKeypoints(validKeypoints)
+                            // Jangan filter berdasarkan score di sini, langsung kirim semua keypoints
+                            binding.keypointsOverlay.updateKeypoints(it)
+                            val analysisResults = riskExerciseHelper.analyzeKeypoints(it)
+                            if (analysisResults != null) {
+                                // Handle the analysis results, e.g., display them to the user
+                                Log.d("RiskAnalysis", "Results: ${analysisResults.joinToString()}")
+                            }
                         }
                     }
                 }
+
+
+
             },
             onError = {
                 runOnUiThread {
@@ -55,54 +69,95 @@ class CameraActivity : AppCompatActivity() {
             }
         )
 
+        riskExerciseHelper = RiskExerciseHelper(this) { errorMsg ->
+            runOnUiThread {
+                Toast.makeText(this, errorMsg, Toast.LENGTH_SHORT).show()
+            }
+        }
+        scope.launch {
+            riskExerciseHelper.initialize()
+        }
     }
 
     public override fun onResume() {
         super.onResume()
         hideSystemUI()
-        startCamera()
+        scope.launch {
+            initializeAndStartCamera()
+        }
+    }
+
+    private suspend fun initializeAndStartCamera() {
+        withContext(Dispatchers.Main) {
+            showLoadingDialog("Initializing Model...")
+        }
+        withContext(Dispatchers.IO) {
+            poseEstimationHelper.initialize()
+        }
+        withContext(Dispatchers.Main) {
+            dismissLoadingDialog()
+            startCamera()
+        }
     }
 
     private fun startCamera() {
         val cameraProviderFuture = ProcessCameraProvider.getInstance(this)
 
         cameraProviderFuture.addListener({
-            val resolutionSelector = ResolutionSelector.Builder()
-                .setAspectRatioStrategy(AspectRatioStrategy.RATIO_16_9_FALLBACK_AUTO_STRATEGY)
-                .build()
-            val imageAnalyzer = ImageAnalysis.Builder()
-                .setResolutionSelector(resolutionSelector)
-                .setTargetRotation(binding.viewFinder.display.rotation)
-                .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
-                .setOutputImageFormat(ImageAnalysis.OUTPUT_IMAGE_FORMAT_RGBA_8888)
-                .build()
-            imageAnalyzer.setAnalyzer(Executors.newSingleThreadExecutor()) { image ->
-                poseEstimationHelper.detectPose(image)
-            }
-
             val cameraProvider: ProcessCameraProvider = cameraProviderFuture.get()
-            val preview = Preview.Builder().build().also {
-                it.setSurfaceProvider(binding.viewFinder.surfaceProvider)
-            }
-            try {
-                cameraProvider.unbindAll()
-                cameraProvider.bindToLifecycle(
-                    this,
-                    cameraSelector,
-                    preview,
-                    imageAnalyzer
-                )
-            } catch (exc: Exception) {
-                Toast.makeText(
-                    this@CameraActivity,
-                    "Failed to start the camera.",
-                    Toast.LENGTH_SHORT
-                ).show()
-                Log.e(TAG, "startCamera: ${exc.message}")
-            }
+            bindCameraUseCases(cameraProvider)
         }, ContextCompat.getMainExecutor(this))
     }
 
+    private fun bindCameraUseCases(cameraProvider: ProcessCameraProvider) {
+        val resolutionSelector = ResolutionSelector.Builder()
+            .setAspectRatioStrategy(AspectRatioStrategy.RATIO_16_9_FALLBACK_AUTO_STRATEGY)
+            .build()
+        val imageAnalyzer = ImageAnalysis.Builder()
+            .setResolutionSelector(resolutionSelector)
+            .setTargetRotation(binding.viewFinder.display.rotation)
+            .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
+            .setOutputImageFormat(ImageAnalysis.OUTPUT_IMAGE_FORMAT_YUV_420_888)
+            .build()
+        imageAnalyzer.setAnalyzer(Executors.newSingleThreadExecutor()) { image ->
+            poseEstimationHelper.detectPose(image)
+        }
+
+        val preview = Preview.Builder().build().also {
+            it.setSurfaceProvider(binding.viewFinder.surfaceProvider)
+        }
+
+        try {
+            cameraProvider.unbindAll()
+            cameraProvider.bindToLifecycle(
+                this,
+                cameraSelector,
+                preview,
+                imageAnalyzer
+            )
+        } catch (exc: Exception) {
+            Toast.makeText(
+                this@CameraActivity,
+                "Failed to start the camera.",
+                Toast.LENGTH_SHORT
+            ).show()
+            Log.e(TAG, "startCamera: ${exc.message}")
+        }
+    }
+
+    private fun showLoadingDialog(message: String) {
+        progressDialog = ProgressDialog(this).apply {
+            setMessage(message)
+            setCancelable(false)
+            show()
+        }
+    }
+
+    private fun dismissLoadingDialog() {
+        if (::progressDialog.isInitialized && progressDialog.isShowing) {
+            progressDialog.dismiss()
+        }
+    }
 
     private fun hideSystemUI() {
         @Suppress("DEPRECATION")
@@ -115,6 +170,11 @@ class CameraActivity : AppCompatActivity() {
             )
         }
         supportActionBar?.hide()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        job.cancel()
     }
 
     companion object {

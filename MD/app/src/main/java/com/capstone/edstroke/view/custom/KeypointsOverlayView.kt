@@ -28,7 +28,7 @@ class KeypointsOverlayView @JvmOverloads constructor(
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         keypoints.forEach { keypoint ->
-            if (keypoint.score > 0.5) { // Draw only if confidence score is above a threshold
+            if (keypoint.score > 0.3) {
                 canvas.drawCircle(keypoint.x * width, keypoint.y * height, 10f, paint)
             }
         }
