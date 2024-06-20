@@ -108,6 +108,6 @@ class RiskExerciseHelper(
 
     companion object {
         private const val TAG = "RiskExerciseHelper"
-        private const val OUTPUT_SIZE = 10 // Adjust this according to the model output size
+        private const val OUTPUT_SIZE = 2 // Adjust this according to the model output size
     }
 }

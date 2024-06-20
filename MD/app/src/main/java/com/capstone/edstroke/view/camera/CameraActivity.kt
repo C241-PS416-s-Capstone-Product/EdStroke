@@ -29,6 +29,9 @@ class CameraActivity : AppCompatActivity() {
     private val scope = CoroutineScope(Dispatchers.Main + job)
     private lateinit var progressDialog: ProgressDialog
 
+    private var repetitionCount = 0
+    private var currentState = "Other"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -44,23 +47,23 @@ class CameraActivity : AppCompatActivity() {
                     }
                 }
 
-                // Di dalam PoseEstimationHelper.DetectorListener.onResults
                 override fun onResults(keypoints: List<PoseEstimationHelper.Keypoint>?, inferenceTime: Long) {
                     runOnUiThread {
                         keypoints?.let {
-                            // Jangan filter berdasarkan score di sini, langsung kirim semua keypoints
-                            binding.keypointsOverlay.updateKeypoints(it)
-                            val analysisResults = riskExerciseHelper.analyzeKeypoints(it)
+                            // Update keypoints on the overlay view
+                            var filteredKeypoint = keypointsFilter(it)
+                            binding.keypointsOverlay.updateKeypoints(filteredKeypoint)
+                            // Analyze keypoints using risk exercise helper
+                            val analysisResults = riskExerciseHelper.analyzeKeypoints(filteredKeypoint)
                             if (analysisResults != null) {
-                                // Handle the analysis results, e.g., display them to the user
                                 Log.d("RiskAnalysis", "Results: ${analysisResults.joinToString()}")
+                                // Convert FloatArray to List<Float>
+                                val analysisResultsList = analysisResults.toList()
+                                updateRepetitionCount(analysisResultsList)
                             }
                         }
                     }
                 }
-
-
-
             },
             onError = {
                 runOnUiThread {
@@ -145,6 +148,24 @@ class CameraActivity : AppCompatActivity() {
         }
     }
 
+    private fun updateRepetitionCount(analysisResults: List<Float>) {
+        val currentExerciseState = if (analysisResults[0] > 0.5) "Exercise" else "Other"
+        if (currentState == "Other" && currentExerciseState == "Exercise") {
+            repetitionCount++
+            Log.d("RepetitionCount", "Repetition count: $repetitionCount")
+            // Update UI with repetition count if needed
+        }
+        currentState = currentExerciseState
+    }
+
+    private fun keypointsFilter(keypoints: List<PoseEstimationHelper.Keypoint>): List<PoseEstimationHelper.Keypoint> {
+        val defaultKeypoint = PoseEstimationHelper.Keypoint(0.0f, 0.0f, 0.0f)
+        val filteredKeypoints = keypoints.map {
+            if (it.score > 0.4) it else defaultKeypoint
+        }
+        return filteredKeypoints
+    }
+
     private fun showLoadingDialog(message: String) {
         progressDialog = ProgressDialog(this).apply {
             setMessage(message)
@@ -175,6 +196,7 @@ class CameraActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         job.cancel()
+        poseEstimationHelper.close()
     }
 
     companion object {

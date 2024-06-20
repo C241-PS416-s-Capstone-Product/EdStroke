@@ -7,7 +7,6 @@ import android.graphics.Color
 import android.graphics.ImageFormat
 import android.graphics.Rect
 import android.graphics.YuvImage
-import android.os.Build
 import android.os.SystemClock
 import android.util.Log
 import androidx.camera.core.ImageProxy
@@ -80,18 +79,18 @@ class PoseEstimationHelper(
     }
 
     private fun setupModel(modelFile: File) {
-        val options = Interpreter.Options()
-        if (CompatibilityList().isDelegateSupportedOnThisDevice) {
-            options.addDelegate(GpuDelegate())
-            Log.d(TAG, "Using GPU delegate")
-        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1) {
-            options.useNNAPI = true
-            Log.d(TAG, "Using NNAPI")
-        } else {
-            options.setNumThreads(4)
-            Log.d(TAG, "Using CPU with 4 threads")
-        }
         try {
+            val options = Interpreter.Options()
+            if (CompatibilityList().isDelegateSupportedOnThisDevice) {
+                options.addDelegate(GpuDelegate())
+                Log.d(TAG, "Using GPU delegate")
+            } else if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O_MR1) {
+                options.useNNAPI = true
+                Log.d(TAG, "Using NNAPI")
+            } else {
+                options.setNumThreads(4)
+                Log.d(TAG, "Using CPU with 4 threads")
+            }
             interpreter = Interpreter(modelFile, options)
             Log.d(TAG, "Pose estimation model set up successfully")
         } catch (e: IOException) {
@@ -146,9 +145,6 @@ class PoseEstimationHelper(
             Log.d(TAG, "Input feature loaded")
 
             val outputBuffer = TensorBuffer.createFixedSize(intArrayOf(1, 1, 17, 3), DataType.FLOAT32)
-
-            // Ensure the tensors are allocated
-            interpreter?.allocateTensors()
 
             var inferenceTime = SystemClock.uptimeMillis()
             interpreter?.run(inputFeature0.buffer, outputBuffer.buffer.rewind())
@@ -218,8 +214,10 @@ class PoseEstimationHelper(
         return true
     }
 
-    private fun extractKeypoints(outputBuffer: TensorBuffer): List<Keypoint> {
+    private fun extractKeypoints(outputBuffer: TensorBuffer?): List<Keypoint> {
         val keypoints = mutableListOf<Keypoint>()
+        if (outputBuffer == null) return keypoints
+
         val scores = outputBuffer.floatArray
 
         // Assume that each keypoint has 3 values: x, y, and score
@@ -232,14 +230,8 @@ class PoseEstimationHelper(
         return keypoints
     }
 
-    fun normalizeKeypoints(keypoints: List<Keypoint>, imageWidth: Int, imageHeight: Int): List<Keypoint> {
-        return keypoints.map { keypoint ->
-            Keypoint(
-                x = keypoint.x / imageWidth,
-                y = keypoint.y / imageHeight,
-                score = keypoint.score
-            )
-        }
+    fun close() {
+        interpreter?.close()
     }
 
     interface DetectorListener {
