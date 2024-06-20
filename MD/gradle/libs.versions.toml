@@ -19,16 +19,17 @@ lifecycleViewmodelKtx = "2.8.2"
 material = "1.12.0"
 activity = "1.9.0"
 constraintlayout = "2.1.4"
-converterGson = "2.9.0"
+converterGson = "2.11.0"
 lifecycleRuntimeKtx = "2.8.2"
-loggingInterceptor = "4.11.0"
+loggingInterceptor = "4.12.0"
 mediapipeFramework = "0.8.11.1"
 playServicesTasks = "18.2.0"
 playServicesTfliteGpu = "16.2.0"
 playServicesTfliteSupport = "16.1.0"
-retrofit = "2.9.0"
+retrofit = "2.11.0"
 tasksVision = "0.20230731"
-tensorflowLiteGpu = "2.9.0"
+tensorflowLite = "2.16.1"
+tensorflowLiteGpu = "2.16.1"
 tensorflowLiteMetadata = "0.4.4"
 tensorflowLiteSupport = "0.4.4"
 firebaseMlModeldownloaderKtx = "25.0.0"
@@ -64,6 +65,7 @@ play-services-tflite-support = { module = "com.google.android.gms:play-services-
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 retrofit2-converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGson" }
 tasks-vision = { module = "com.google.mediapipe:tasks-vision", version.ref = "tasksVision" }
+tensorflow-lite = { module = "org.tensorflow:tensorflow-lite", version.ref = "tensorflowLite" }
 tensorflow-lite-gpu = { module = "org.tensorflow:tensorflow-lite-gpu", version.ref = "tensorflowLiteGpu" }
 tensorflow-lite-metadata = { module = "org.tensorflow:tensorflow-lite-metadata", version.ref = "tensorflowLiteMetadata" }
 tensorflow-lite-task-vision = { module = "org.tensorflow:tensorflow-lite-task-vision", version.ref = "tensorflowLiteMetadata" }
