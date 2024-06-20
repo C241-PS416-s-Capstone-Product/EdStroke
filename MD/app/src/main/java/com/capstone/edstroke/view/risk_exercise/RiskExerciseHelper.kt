@@ -1,9 +1,7 @@
-package com.capstone.edstroke.view.riskexercise
+package com.capstone.edstroke.view.risk_exercise
 
 import android.content.Context
 import android.util.Log
-import com.capstone.edstroke.view.camera.PoseEstimationHelper.Keypoint
-import com.google.firebase.ml.modeldownloader.CustomModel
 import com.google.firebase.ml.modeldownloader.CustomModelDownloadConditions
 import com.google.firebase.ml.modeldownloader.DownloadType
 import com.google.firebase.ml.modeldownloader.FirebaseModelDownloader
@@ -19,6 +17,7 @@ import java.io.File
 import java.io.IOException
 
 class RiskExerciseHelper(
+    val exercise: String,
     val context: Context,
     private val onError: (String) -> Unit,
 ) {
@@ -26,20 +25,36 @@ class RiskExerciseHelper(
 
     suspend fun initialize() {
         withContext(Dispatchers.IO) {
-            downloadModel()
+            downloadModel(exercise)
         }
     }
 
-    private suspend fun downloadModel() {
+    private suspend fun downloadModel(exercise: String) {
         val conditions = CustomModelDownloadConditions.Builder()
             .requireWifi()
             .build()
         try {
-            val model = FirebaseModelDownloader.getInstance()
-                .getModel("exercise-trial-1", DownloadType.LOCAL_MODEL, conditions)
-                .await()
-            val modelFile = model.file ?: throw IOException("Model file is null")
-            setupModel(modelFile)
+            when (exercise) {
+                "Shoulder Range of Motion" -> {
+                    val model = FirebaseModelDownloader.getInstance()
+                        .getModel("exercise-trial-1", DownloadType.LOCAL_MODEL, conditions)
+                        .await()
+                    val modelFile = model.file ?: throw IOException("Model file is null")
+                    setupModel(modelFile)
+                }
+                "Mini-Lunge" -> {
+                    val model = FirebaseModelDownloader.getInstance()
+                        .getModel("exercise-trial-1", DownloadType.LOCAL_MODEL, conditions)
+                        .await()
+                    val modelFile = model.file ?: throw IOException("Model file is null")
+                    setupModel(modelFile)
+                }
+                else -> {
+                    val errorMsg = "Invalid exercise: $exercise"
+                    Log.e(TAG, errorMsg)
+                    onError(errorMsg)
+                }
+            }
         } catch (e: Exception) {
             val errorMsg = "Failed to download exercise-trial-1 model"
             Log.e(TAG, errorMsg, e)
@@ -69,7 +84,7 @@ class RiskExerciseHelper(
         }
     }
 
-    fun analyzeKeypoints(keypoints: List<Keypoint>): FloatArray? {
+    fun analyzeKeypoints(keypoints: List<PoseEstimationHelper.Keypoint>): FloatArray? {
         if (interpreter == null) {
             val errorMsg = "Exercise trial model is not set up yet"
             Log.e(TAG, errorMsg)
@@ -104,6 +119,10 @@ class RiskExerciseHelper(
             onError(errorMsg)
             null
         }
+    }
+
+    fun close() {
+        interpreter?.close()
     }
 
     companion object {

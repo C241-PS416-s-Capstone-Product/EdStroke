@@ -4,6 +4,7 @@ camera = "1.1.0-alpha01"
 camera-view = "1.0.0-alpha23"
 activityKtx = "1.9.0"
 agp = "8.5.0"
+core = "12.1.0"
 datastorePreferences = "1.1.1"
 firebaseBom = "33.1.0"
 firebaseMlModeldownloader = "25.0.0"
@@ -44,6 +45,7 @@ activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "activ
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastorePreferences" }
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
+core = { module = "com.pierfrancescosoffritti.androidyoutubeplayer:core", version.ref = "core" }
 firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
 firebase-ml-modeldownloader = { module = "com.google.firebase:firebase-ml-modeldownloader", version.ref = "firebaseMlModeldownloader" }

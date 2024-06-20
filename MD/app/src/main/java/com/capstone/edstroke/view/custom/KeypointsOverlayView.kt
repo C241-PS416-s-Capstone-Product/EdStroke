@@ -7,20 +7,20 @@ import android.graphics.Paint
 import android.util.AttributeSet
 import android.util.Log
 import android.view.View
-import com.capstone.edstroke.view.camera.PoseEstimationHelper.Keypoint
+import com.capstone.edstroke.view.risk_exercise.PoseEstimationHelper
 
 class KeypointsOverlayView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
 
-    private val keypoints = mutableListOf<Keypoint>()
+    private val keypoints = mutableListOf<PoseEstimationHelper.Keypoint>()
     private val paint = Paint().apply {
         color = Color.RED
         strokeWidth = 10f
         style = Paint.Style.FILL
     }
 
-    fun updateKeypoints(newKeypoints: List<Keypoint>) {
+    fun updateKeypoints(newKeypoints: List<PoseEstimationHelper.Keypoint>) {
         keypoints.clear()
         keypoints.addAll(newKeypoints)
         Log.d("KeypointsOverlayView", "Updated keypoints: $keypoints")
