@@ -1,4 +1,4 @@
-package com.capstone.edstroke.view.camera
+package com.capstone.edstroke.view.risk_exercise
 
 import android.content.Context
 import android.graphics.Bitmap

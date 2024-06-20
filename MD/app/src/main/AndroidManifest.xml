@@ -24,7 +24,7 @@
         android:theme="@style/Theme.EdStroke"
         tools:targetApi="31">
         <activity
-            android:name=".view.risk_screening.RiskScreeningActivity"
+            android:name=".view.risk_exercise.RehabExerciseActivity"
             android:exported="false" />
 
 

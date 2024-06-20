@@ -84,6 +84,8 @@ dependencies {
 
     implementation(libs.tasks.vision)
 
+    implementation(libs.core)
+
     // Import the Firebase BoM
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.ml.modeldownloader)
