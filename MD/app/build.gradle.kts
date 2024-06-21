@@ -29,11 +29,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
     buildFeatures {
         viewBinding = true
@@ -71,6 +71,7 @@ dependencies {
     implementation(libs.camera.lifecycle)
     implementation(libs.camera.view)
 
+    implementation(libs.tensorflow.lite)
     implementation(libs.tensorflow.lite.metadata)
 
     implementation(libs.play.services.tflite.support)
@@ -83,6 +84,8 @@ dependencies {
 
     implementation(libs.tasks.vision)
 
+    implementation(libs.core)
+
     // Import the Firebase BoM
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.ml.modeldownloader)
@@ -90,4 +93,5 @@ dependencies {
     // TODO: Add the dependencies for Firebase products you want to use
     // When using the BoM, don't specify versions in Firebase dependencies
     implementation(libs.firebase.analytics)
+    implementation(libs.circle.imageview)
 }

@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.risk_screening.RiskResultActivity">
+
+    <include
+        android:id="@+id/tb_risk_result"
+        layout="@layout/risk_toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/ns_risk_result"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#FFFFFFFF"
+        android:fillViewport="true"
+        android:fitsSystemWindows="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tb_risk_result">
+
+
+        <LinearLayout
+            android:id="@+id/r3dqd5kvqn17"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FFFFFFFF"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/lbl_risk_result"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:text="Risk Result"
+                android:textColor="@color/blue"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/lbl_desc_result"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="84dp"
+                android:gravity="center"
+                android:text="Start Your Stroke Recovery Now: \nCreate Your Free Account"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:id="@+id/rhvpwm00pq7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="23dp"
+                android:layout_marginBottom="76dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/r9dpnpvkxouj"
+                    android:layout_width="49dp"
+                    android:layout_height="9dp"
+                    android:background="@drawable/shape_green"
+                    android:orientation="vertical">
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:id="@+id/r95gjskh3ln"
+                    android:layout_width="51dp"
+                    android:layout_height="9dp"
+                    android:background="@drawable/shape_green"
+                    android:orientation="vertical">
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:id="@+id/r555fo5pkir"
+                    android:layout_width="48dp"
+                    android:layout_height="9dp"
+                    android:background="@drawable/shape_yellow"
+                    android:orientation="vertical">
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:id="@+id/rxfp3l1ykh0m"
+                    android:layout_width="48dp"
+                    android:layout_height="9dp"
+                    android:background="@drawable/shape_yellow"
+                    android:orientation="vertical">
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:id="@+id/rpit3jmjbxz"
+                    android:layout_width="51dp"
+                    android:layout_height="9dp"
+                    android:background="@drawable/shape_red"
+                    android:orientation="vertical">
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:id="@+id/rju4mtun0yqj"
+                    android:layout_width="49dp"
+                    android:layout_height="9dp"
+                    android:background="@drawable/shape_red"
+                    android:orientation="vertical">
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_risk_result"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="22dp"
+                android:layout_marginBottom="40dp"
+                android:background="@drawable/rounded_button"
+                android:elevation="20dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:paddingVertical="26dp"
+                app:backgroundTint="@null">
+
+                <TextView
+                    android:id="@+id/tv_risk_result"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="87.53%"
+                    android:textColor="#FFFFFF"
+                    android:textSize="32sp" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_back_dashboard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="22dp"
+                android:layout_marginBottom="40dp"
+                android:background="@drawable/rounded_button"
+                android:elevation="20dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:paddingVertical="26dp"
+                android:text="Back to dashboard"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                app:backgroundTint="@null" />
+
+            <LinearLayout
+                android:id="@+id/rvp6ol1dgccg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="21dp"
+                android:layout_marginBottom="152dp"
+                android:background="@drawable/shape_white"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:paddingVertical="14dp">
+
+                <TextView
+                    android:id="@+id/rwqkie16t3jq"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="See Recommendation Actions"
+                    android:textColor="#494949"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

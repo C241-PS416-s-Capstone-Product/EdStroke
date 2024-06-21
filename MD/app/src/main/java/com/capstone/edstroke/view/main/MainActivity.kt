@@ -7,7 +7,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -18,14 +17,17 @@ import com.capstone.edstroke.databinding.ActivityMainBinding
 import com.capstone.edstroke.view.ViewModelFactory
 import com.capstone.edstroke.view.getImageUri
 import com.capstone.edstroke.view.result.ResultActivity
-import com.capstone.edstroke.view.camera.CameraActivity
-import com.capstone.edstroke.view.camera.CameraActivity.Companion.CAMERAX_RESULT
+//import com.capstone.edstroke.view.camera.CameraActivity
+//import com.capstone.edstroke.view.camera.CameraActivity.Companion.CAMERAX_RESULT
+import com.capstone.edstroke.view.profile.ProfileActivity
+import com.capstone.edstroke.view.risk_exercise.RehabExerciseActivity
+import com.capstone.edstroke.view.risk_screening.RiskScreeningActivity
 import com.capstone.edstroke.view.welcome.WelcomeActivity
 
 class MainActivity : AppCompatActivity() {
 
     private val mainViewModel by viewModels<MainViewModel> {
-        ViewModelFactory.getInstance(this)
+        ViewModelFactory(this)
     }
 
     private lateinit var binding: ActivityMainBinding
@@ -66,8 +68,17 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.galleryButton.setOnClickListener { startGallery() }
+        binding.btnProfile.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+        }
+        binding.btnRiskScreening.setOnClickListener {
+            val intent = Intent(this, RiskScreeningActivity::class.java)
+            startActivity(intent)
+        }
+
         binding.cameraButton.setOnClickListener { startCamera() }
-        binding.cameraXButton.setOnClickListener { startCameraX() }
+//        binding.cameraXButton.setOnClickListener { startCameraX() }
         binding.analyzeButton.setOnClickListener {
             currentImageUri?.let {
                 analyzeImage(it)
@@ -75,10 +86,15 @@ class MainActivity : AppCompatActivity() {
                 showToast(getString(R.string.empty_image_warning))
             }
         }
+
+        binding.btnLogout.setOnClickListener { mainViewModel.logout() }
+
     }
 
     private fun startGallery() {
-        launcherGallery.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
+        val intent = Intent(this, RehabExerciseActivity::class.java)
+        startActivity(intent)
+//        launcherGallery.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
     }
 
     private val launcherGallery = registerForActivityResult(
@@ -105,19 +121,19 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun startCameraX() {
-        val intent = Intent(this, CameraActivity::class.java)
-        launcherIntentCameraX.launch(intent)
-    }
-
-    private val launcherIntentCameraX = registerForActivityResult(
-        ActivityResultContracts.StartActivityForResult()
-    ) {
-        if (it.resultCode == CAMERAX_RESULT) {
-            currentImageUri = it.data?.getStringExtra(CameraActivity.EXTRA_CAMERAX_IMAGE)?.toUri()
-            showImage()
-        }
-    }
+//    private fun startCameraX() {
+//        val intent = Intent(this, CameraActivity::class.java)
+//        launcherIntentCameraX.launch(intent)
+//    }
+//
+//    private val launcherIntentCameraX = registerForActivityResult(
+//        ActivityResultContracts.StartActivityForResult()
+//    ) {
+//        if (it.resultCode == CAMERAX_RESULT) {
+//            currentImageUri = it.data?.getStringExtra(CameraActivity.EXTRA_CAMERAX_IMAGE)?.toUri()
+//            showImage()
+//        }
+//    }
 
     private fun showImage() {
         currentImageUri?.let {

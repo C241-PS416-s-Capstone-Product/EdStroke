@@ -6,10 +6,12 @@
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="28" />
+
     <uses-feature android:name="android.hardware.camera" />
+
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
 
     <application
         android:allowBackup="true"
@@ -22,13 +24,35 @@
         android:theme="@style/Theme.EdStroke"
         tools:targetApi="31">
         <activity
+            android:name=".view.dashboard.DashboardActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".view.risk_screening.RiskResultActivity"
+
+            android:exported="false" />
+        <activity
+            android:name=".view.profile.EditProfileActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".view.risk_screening.RiskScreeningActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".view.profile.ProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.result.ResultActivity"
             android:exported="false" />
-
         <activity
             android:name=".view.camera.CameraActivity"
-            android:exported="false"/>
-
+            android:exported="false" />
         <activity
             android:name=".view.welcome.WelcomeActivity"
             android:exported="false" />
@@ -39,16 +63,9 @@
         <activity
             android:name=".view.login.LoginActivity"
             android:exported="false" />
-
         <activity
             android:name=".view.main.MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false"/>
 
         <provider
             android:name="androidx.core.content.FileProvider"

@@ -15,11 +15,12 @@ import com.capstone.edstroke.R
 import com.capstone.edstroke.data.pref.UserModel
 import com.capstone.edstroke.databinding.ActivityLoginBinding
 import com.capstone.edstroke.view.ViewModelFactory
+import com.capstone.edstroke.view.dashboard.DashboardActivity
 import com.capstone.edstroke.view.main.MainActivity
 
 class LoginActivity : AppCompatActivity() {
     private val loginViewModel by viewModels<LoginViewModel> {
-        ViewModelFactory.getInstance(this)
+        ViewModelFactory(this)
     }
     private lateinit var binding: ActivityLoginBinding
 
@@ -72,7 +73,7 @@ class LoginActivity : AppCompatActivity() {
                                 setTitle(getString(R.string.yeah))
                                 setMessage(getString(R.string.login_alert))
                                 setPositiveButton(getString(R.string.next)) { _, _ ->
-                                    val intent = Intent(context, MainActivity::class.java)
+                                    val intent = Intent(context, DashboardActivity::class.java)
                                     intent.flags =
                                         Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                                     startActivity(intent)
@@ -104,7 +105,8 @@ class LoginActivity : AppCompatActivity() {
         val title = ObjectAnimator.ofFloat(binding.titleTextView, View.ALPHA, 1f).setDuration(100)
         val desc =
             ObjectAnimator.ofFloat(binding.descTextView, View.ALPHA, 1f).setDuration(100)
-        val username = ObjectAnimator.ofFloat(binding.usernameTextView, View.ALPHA, 1f).setDuration(100)
+        val username =
+            ObjectAnimator.ofFloat(binding.usernameTextView, View.ALPHA, 1f).setDuration(100)
         val usernameedit =
             ObjectAnimator.ofFloat(binding.usernameEditTextLayout, View.ALPHA, 1f).setDuration(100)
         val password =

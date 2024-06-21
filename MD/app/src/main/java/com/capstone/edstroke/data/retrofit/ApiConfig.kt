@@ -18,7 +18,8 @@ object ApiConfig {
             .addInterceptor { chain ->
                 val req = chain.request().newBuilder()
                 token?.let { token ->
-                    req.addHeader("Authorization", "Bearer $token")
+                    req.addHeader("X-auth-token", token)
+//                                    req.addHeader("Authorization", "Bearer $token")
                 }
                 chain.proceed(req.build())
             }
@@ -39,14 +40,14 @@ object ApiConfig {
             .addInterceptor { chain ->
                 val req = chain.request().newBuilder()
                 token?.let { token ->
-                    req.addHeader("Authorization", "Bearer $token")
+                    req.addHeader("X-auth-token", token)
                 }
                 chain.proceed(req.build())
             }
             .build()
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://backend-server-esmhw7j32a-et.a.run.app/api/predict/")
+            .baseUrl("https://backend-server-esmhw7j32a-et.a.run.app/api/")
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()

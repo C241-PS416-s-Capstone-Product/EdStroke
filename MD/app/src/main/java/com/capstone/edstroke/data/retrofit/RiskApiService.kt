@@ -1,6 +1,9 @@
 package com.capstone.edstroke.data.retrofit
 
+import com.capstone.edstroke.data.request.RiskScreeningRequest
 import com.capstone.edstroke.data.response.PredictResponse
+import com.capstone.edstroke.data.response.RiskScreeningResponse
+import retrofit2.http.Body
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
@@ -20,4 +23,10 @@ interface RiskApiService {
         @Field("bmi") bmi: Int,
         @Field("smoking_status") smokingStatus: String
     ): PredictResponse
+
+    @POST("predict/")
+    suspend fun riskScreening(
+        @Body riskScreeningRequest: RiskScreeningRequest
+    ): PredictResponse
+
 }

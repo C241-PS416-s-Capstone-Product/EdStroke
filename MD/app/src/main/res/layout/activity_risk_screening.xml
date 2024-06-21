@@ -1,0 +1,563 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.risk_exercise.RehabExerciseActivity">
+
+    <include
+        android:id="@+id/tb_risk"
+        layout="@layout/risk_toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/ns_risk"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom"
+        android:background="#FFFFFFFF"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tb_risk">
+
+        <LinearLayout
+            android:id="@+id/r514ob0u18vw"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FFFFFFFF"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/rdp5ul3m8d1o"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="16dp"
+                android:text="Let’s see..."
+                android:textColor="#000000"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/rmk3j7pozd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="22dp"
+                android:layout_marginBottom="15dp"
+                android:text="Gender"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:id="@+id/r67y9u4f3jzp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="21dp"
+                android:layout_marginBottom="16dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+
+                <RadioGroup
+                    android:id="@+id/rg_gender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rd_male"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="16dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/custom_radio_button"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="Male"
+                        android:textColor="@drawable/color_state_list" />
+
+                    <RadioButton
+                        android:id="@+id/rd_female"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/custom_radio_button"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="Female"
+                        android:textColor="@drawable/color_state_list" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/lbl_age"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="23dp"
+                android:layout_marginBottom="15dp"
+                android:text="Age"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/edt_age"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="21dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/edit_text_background"
+                android:hint="e.g 28"
+                android:inputType="number"
+                android:paddingHorizontal="22dp"
+                android:paddingVertical="18dp"
+                android:textColorHint="@color/grey" />
+
+            <TextView
+                android:id="@+id/lbl_hipertension"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="22dp"
+                android:layout_marginBottom="15dp"
+                android:text="History of Hipertension?"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:id="@+id/ll_hipertension"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="21dp"
+                android:layout_marginBottom="16dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <RadioGroup
+                    android:id="@+id/rg_hipertension"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rd_yes_hipertension"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="16dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/custom_radio_button"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="Yes"
+                        android:textColor="@drawable/color_state_list" />
+
+                    <RadioButton
+                        android:id="@+id/rd_no_hipertension"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/custom_radio_button"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="No"
+                        android:textColor="@drawable/color_state_list" />
+
+                </RadioGroup>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/lbl_heart_desease"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginBottom="15dp"
+                android:text="History of Heart Disease?"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:id="@+id/ll_heart_desease"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="22dp"
+                android:layout_marginBottom="16dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <RadioGroup
+                    android:id="@+id/rg_heart_desease"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rd_yes_heart_disease"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="16dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/custom_radio_button"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="Yes"
+                        android:textColor="@drawable/color_state_list" />
+
+                    <RadioButton
+                        android:id="@+id/rd_no_heart_disease"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/custom_radio_button"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="No"
+                        android:textColor="@drawable/color_state_list" />
+
+                </RadioGroup>
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/lbl_married"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginBottom="15dp"
+                android:text="Ever Married?"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:id="@+id/ll_married"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="22dp"
+                android:layout_marginBottom="16dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <RadioGroup
+                    android:id="@+id/rg_married"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rd_yes_married"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="16dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/custom_radio_button"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="Yes"
+                        android:textColor="@drawable/color_state_list" />
+
+                    <RadioButton
+                        android:id="@+id/rd_no_married"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/custom_radio_button"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="No"
+                        android:textColor="@drawable/color_state_list" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/lbl_work_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginBottom="15dp"
+                android:text="Work Type?"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:id="@+id/ll_worked_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="21dp"
+                android:layout_marginBottom="14dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <RadioGroup
+                    android:id="@+id/rg_worked_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rd_govt_work"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="16dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/custom_radio_button"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="Government"
+                        android:textColor="@drawable/color_state_list" />
+
+                    <RadioButton
+                        android:id="@+id/rd_private_work"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="16dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/custom_radio_button"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="Private"
+                        android:textColor="@drawable/color_state_list" />
+
+                    <RadioButton
+                        android:id="@+id/rd_self_employeed_work"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="16dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/custom_radio_button"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="Self Employed"
+                        android:textColor="@drawable/color_state_list" />
+
+                    <RadioButton
+                        android:id="@+id/rd_never_work"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:background="@drawable/custom_radio_button"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="never worked"
+                        android:textColor="@drawable/color_state_list" />
+
+
+                </RadioGroup>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/lbl_residence"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginBottom="15dp"
+                android:text="Residence Type?"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:id="@+id/ll_residence"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="22dp"
+                android:layout_marginBottom="16dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <RadioGroup
+                    android:id="@+id/rg_residence"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rd_rural_residence"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="16dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/custom_radio_button"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="Rural"
+                        android:textColor="@drawable/color_state_list" />
+
+                    <RadioButton
+                        android:id="@+id/rd_urban_residence"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/custom_radio_button"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="Urban"
+                        android:textColor="@drawable/color_state_list" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/lbl_glucose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginBottom="18dp"
+                android:text="Average Glucose Level"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/edt_glucose"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="21dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/edit_text_background"
+                android:hint="e.g 135"
+                android:inputType="number"
+                android:paddingHorizontal="22dp"
+                android:paddingVertical="18dp"
+                android:textColorHint="@color/grey" />
+
+
+            <TextView
+                android:id="@+id/lbl_bmi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="22dp"
+                android:layout_marginBottom="17dp"
+                android:text="Body Mass Index (BMI)"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/edt_bmi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="21dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/edit_text_background"
+                android:hint="e.g 28"
+                android:inputType="number"
+                android:paddingHorizontal="22dp"
+                android:paddingVertical="18dp"
+                android:textColorHint="@color/grey" />
+
+            <TextView
+                android:id="@+id/lbl_smoker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginBottom="15dp"
+                android:text="Smoker?"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:id="@+id/ll_smoker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="21dp"
+                android:layout_marginBottom="14dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <RadioGroup
+                    android:id="@+id/rg_smoker"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rd_active_smoker"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="16dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/custom_radio_button"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="Active"
+                        android:textColor="@drawable/color_state_list" />
+
+                    <RadioButton
+                        android:id="@+id/rd_formerly_smoker"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="16dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/custom_radio_button"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="Formerly"
+                        android:textColor="@drawable/color_state_list" />
+
+                    <RadioButton
+                        android:id="@+id/rd_never_smoker"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:background="@drawable/custom_radio_button"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="never"
+                        android:textColor="@drawable/color_state_list" />
+
+                </RadioGroup>
+            </LinearLayout>
+
+
+
+
+            <Button
+                android:id="@+id/btnEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="14dp"
+                android:layout_marginBottom="23dp"
+                android:background="@drawable/rounded_button"
+                android:elevation="20dp"
+                android:gravity="center_horizontal"
+                android:paddingVertical="20dp"
+                android:text="Submit &amp; Calculate"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                app:backgroundTint="@null" />
+
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
