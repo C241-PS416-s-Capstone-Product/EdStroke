@@ -21,7 +21,7 @@ class MapViewModel : ViewModel() {
     private val modelDetailMutableLiveData = MutableLiveData<ModelDetail>()
 
     companion object {
-        var strApiKey = BuildConfig.MAPS_API_KEY
+        var strApiKey = "AIzaSyDAinIjgyrE3owfcoBK4tDvU5ktntoMapE"
     }
 
     fun setMarkerLocation(strLocation: String) {

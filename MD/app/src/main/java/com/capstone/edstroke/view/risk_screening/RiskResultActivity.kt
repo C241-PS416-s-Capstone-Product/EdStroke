@@ -44,7 +44,13 @@ class RiskResultActivity : AppCompatActivity() {
     }
 
     private fun detailView(item: PredictResponse) {
-        binding.tvRiskResult.text = item.probability.toString()
+        val significantDigits = 4
+        val numberStr = item.probability.toString()
+        val eIndex = numberStr.indexOf('E')
+        val decimalPart = if (eIndex != -1) numberStr.substring(0, eIndex) else numberStr
+        val valueProbability = decimalPart.substring(0, significantDigits)
+
+        binding.tvRiskResult.text = "$valueProbability%"
     }
 
     companion object {

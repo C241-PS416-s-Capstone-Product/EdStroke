@@ -74,6 +74,7 @@ class DashboardActivity : AppCompatActivity() {
             val intent = Intent(this, AdviceActivity::class.java)
             startActivity(intent)
         }
+
     }
 
 
