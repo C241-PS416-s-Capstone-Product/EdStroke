@@ -9,7 +9,8 @@ import com.capstone.edstroke.databinding.ItemAdviceBinding
 class AdviceAdapter(private val adviceList: List<AdviceResponse>) : RecyclerView.Adapter<AdviceAdapter.AdviceViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdviceViewHolder {
-        val binding = ItemAdviceBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val inflater = LayoutInflater.from(parent.context)
+        val binding = ItemAdviceBinding.inflate(inflater, parent, false)
         return AdviceViewHolder(binding)
     }
 
@@ -21,8 +22,7 @@ class AdviceAdapter(private val adviceList: List<AdviceResponse>) : RecyclerView
 
     inner class AdviceViewHolder(private val binding: ItemAdviceBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(adviceItem: AdviceResponse) {
-            binding.tvTitle.text = adviceItem.advice
-            binding.tvDescription.text = adviceItem.errorMessage
+            binding.tvDescription.text = adviceItem.advice
         }
     }
 }
