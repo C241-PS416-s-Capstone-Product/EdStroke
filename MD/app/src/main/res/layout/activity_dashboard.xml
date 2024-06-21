@@ -1,31 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFFFF"
-    android:clipChildren="false"
-    android:clipToPadding="false"
-    android:orientation="vertical"
-    tools:context=".view.dashboard.DashboardActivity">
+    android:fitsSystemWindows="true">
 
-    <ScrollView
-        android:id="@+id/rg7hwx1grm8n"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="#FFFBFBFD"
-        android:clipChildren="false"
-        android:clipToPadding="false"
-        android:fillViewport="true">
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        tools:context=".view.dashboard.DashboardActivity">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:clipChildren="false"
             android:clipToPadding="false"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <RelativeLayout
                 android:id="@+id/ro8aofoaq11_rl"
@@ -68,9 +64,7 @@
                                 android:layout_marginHorizontal="5dp"
                                 android:layout_marginBottom="18dp"
                                 android:src="@drawable/ic_baseline_person_24"
-                                tools:src="@tools:sample/avatars">
-                            </de.hdodenhof.circleimageview.CircleImageView>
-
+                                tools:src="@tools:sample/avatars" />
 
                             <LinearLayout
                                 android:id="@+id/ll_view_profile"
@@ -130,9 +124,8 @@
                             <TextView
                                 android:id="@+id/r369p7eyapjm"
                                 android:layout_width="match_parent"
-                                android:layout_height="0dp"
+                                android:layout_height="wrap_content"
                                 android:layout_marginHorizontal="3dp"
-                                android:layout_weight="1"
                                 android:text="Yang baik untuk tubuhmu adalah yang baik untuk jiwamu."
                                 android:textColor="#FFFFFF"
                                 android:textSize="14sp" />
@@ -195,7 +188,7 @@
                         android:layout_width="46dp"
                         android:layout_height="7dp"
                         android:background="@drawable/shape_black"
-                        android:orientation="vertical"></LinearLayout>
+                        android:orientation="vertical" />
 
                     <View
                         android:layout_width="0dp"
@@ -207,7 +200,7 @@
                         android:layout_width="48dp"
                         android:layout_height="7dp"
                         android:background="@drawable/shape_red"
-                        android:orientation="vertical"></LinearLayout>
+                        android:orientation="vertical" />
 
                     <View
                         android:layout_width="0dp"
@@ -219,7 +212,7 @@
                         android:layout_width="46dp"
                         android:layout_height="7dp"
                         android:background="@drawable/shape_green"
-                        android:orientation="vertical"></LinearLayout>
+                        android:orientation="vertical" />
 
                     <View
                         android:layout_width="0dp"
@@ -231,7 +224,7 @@
                         android:layout_width="46dp"
                         android:layout_height="7dp"
                         android:background="@drawable/shape_yellow"
-                        android:orientation="vertical"></LinearLayout>
+                        android:orientation="vertical" />
 
                     <View
                         android:layout_width="0dp"
@@ -243,9 +236,7 @@
                         android:layout_width="48dp"
                         android:layout_height="7dp"
                         android:background="@drawable/shape_green"
-                        android:orientation="vertical">
-
-                    </LinearLayout>
+                        android:orientation="vertical" />
 
                     <View
                         android:layout_width="0dp"
@@ -257,8 +248,7 @@
                         android:layout_width="46dp"
                         android:layout_height="7dp"
                         android:background="@drawable/shape_yellow"
-                        android:orientation="vertical">
-                    </LinearLayout>
+                        android:orientation="vertical" />
                 </LinearLayout>
 
                 <TextView
@@ -282,7 +272,7 @@
                 android:textSize="20sp" />
 
             <LinearLayout
-                android:id="@+id/ll_exercise"
+                android:id="@+id/stroke_exercise"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="13dp"
@@ -294,23 +284,22 @@
                 android:paddingVertical="16dp">
 
                 <TextView
-                    android:id="@+id/r388uv3dhcyw"
+                    android:id="@+id/startExerciseTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="19dp"
                     android:layout_marginBottom="27dp"
-                    android:text="Start your Exercise Now!"
+                    android:text="@string/start_your_exercise_now"
                     android:textColor="#222222"
                     android:textSize="14sp" />
 
                 <TextView
-                    android:id="@+id/rjaq21j837pc"
+                    android:id="@+id/dayOneTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="33dp"
                     android:layout_marginBottom="29dp"
-                    android:layout_weight="1"
-                    android:text="Day One, Let's Go! \nLog Your Workout Now."
+                    android:text="@string/day_one_let_s_go_nlog_your_workout_now"
                     android:textColor="#007AFE"
                     android:textSize="16sp" />
 
@@ -323,115 +312,6 @@
                     android:clipToPadding="false"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:id="@+id/ronyskrm2qf"
-                        android:layout_width="144dp"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/sff5e27fdsw1bffffffff"
-                        android:clipChildren="false"
-                        android:clipToPadding="false"
-                        android:elevation="24dp"
-                        android:orientation="vertical"
-                        android:paddingTop="5dp"
-                        android:paddingBottom="39dp">
-
-                        <LinearLayout
-                            android:id="@+id/rny6q7drx82e"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="6dp"
-                            android:clipChildren="false"
-                            android:clipToPadding="false"
-                            android:orientation="vertical">
-
-                            <RelativeLayout
-                                android:id="@+id/rci90gdu4zvv"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="2dp"
-                                android:clipChildren="false"
-                                android:clipToPadding="false">
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:clipChildren="false"
-                                    android:clipToPadding="false"
-                                    android:orientation="vertical">
-
-                                    <LinearLayout
-                                        android:id="@+id/r6fi0jzg47p7"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="93dp"
-
-                                        android:background="@drawable/sff5e27fdsw1"
-                                        android:orientation="vertical">
-
-                                        <ImageView
-                                            android:layout_width="match_parent"
-                                            android:layout_height="match_parent"
-                                            android:scaleType="fitXY"
-                                            android:src="@drawable/sample_exercise" />
-
-                                    </LinearLayout>
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:id="@+id/rwsmwadkhiao"
-                                    android:layout_width="27dp"
-                                    android:layout_height="28dp"
-                                    android:layout_alignParentRight="true"
-                                    android:layout_alignParentBottom="true"
-                                    android:layout_marginEnd="12dp"
-                                    android:layout_marginBottom="-7dp"
-                                    android:background="@drawable/shape_blue"
-                                    android:clipChildren="false"
-                                    android:clipToPadding="false"
-                                    android:elevation="16dp"
-                                    android:orientation="vertical"
-                                    android:paddingHorizontal="10dp">
-
-                                    <LinearLayout
-                                        android:id="@+id/ric3dfix4gr"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="11dp"
-                                        android:layout_marginTop="9dp"
-                                        android:background="@drawable/shape_white_1dp"
-                                        android:clipChildren="false"
-                                        android:clipToPadding="false"
-                                        android:orientation="vertical">
-
-                                    </LinearLayout>
-
-
-                                </LinearLayout>
-                            </RelativeLayout>
-
-                            <TextView
-                                android:id="@+id/rmy5o1e0h2m"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="16dp"
-                                android:text="Introduction"
-                                android:textColor="#3C4158"
-                                android:textSize="14sp" />
-                        </LinearLayout>
-
-                        <TextView
-                            android:id="@+id/rd2fowuou3si"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:text="Exercise 1"
-                            android:textColor="#3C4158"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:layout_weight="1" />
 
                     <LinearLayout
                         android:id="@+id/rr3e3znc1vvr"
@@ -461,12 +341,12 @@
                                 android:clipChildren="false"
                                 android:clipToPadding="false"
                                 android:orientation="vertical">
+
                                 <ImageView
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:scaleType="fitXY"
                                     android:src="@drawable/sample_exercise" />
-
                             </LinearLayout>
 
                             <RelativeLayout
@@ -475,15 +355,6 @@
                                 android:layout_height="match_parent"
                                 android:clipChildren="false"
                                 android:clipToPadding="false">
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:clipChildren="false"
-                                    android:clipToPadding="false"
-                                    android:orientation="vertical">
-
-                                </LinearLayout>
 
                                 <RelativeLayout
                                     android:id="@+id/rw7gfz07agng_rl"
@@ -508,15 +379,14 @@
                                         android:paddingHorizontal="9dp">
 
                                         <LinearLayout
-                                            android:id="@+id/rn20wluxye3"
+                                            android:id="@+id/shapeBlue"
                                             android:layout_width="match_parent"
                                             android:layout_height="11dp"
                                             android:layout_marginTop="7dp"
                                             android:background="@drawable/shape_blue"
                                             android:clipChildren="false"
                                             android:clipToPadding="false"
-                                            android:orientation="vertical">
-                                        </LinearLayout>
+                                            android:orientation="vertical" />
                                     </LinearLayout>
                                 </RelativeLayout>
 
@@ -531,15 +401,27 @@
                         </LinearLayout>
 
                         <TextView
-                            android:id="@+id/ro37fmnw9dc"
+                            android:id="@+id/exercise1TextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="15dp"
-                            android:text="Exercise 2"
+                            android:text="@string/exercise_1"
                             android:textColor="#FFFFFF"
                             android:textSize="14sp" />
                     </LinearLayout>
+
+                    <Button
+                        android:id="@+id/startExerciseButton"
+                        android:layout_width="190dp"
+                        android:layout_height="170dp"
+                        android:layout_marginStart="16dp"
+                        android:backgroundTint="#007AFE"
+                        android:text="@string/start_exercise_click_here"
+                        android:textColor="#FFFFFF"
+                        android:textSize="14sp" />
+
                 </LinearLayout>
+
             </LinearLayout>
 
             <TextView
@@ -606,9 +488,7 @@
                             android:layout_weight="1"
                             android:clipChildren="false"
                             android:clipToPadding="false"
-                            android:orientation="vertical">
-
-                        </LinearLayout>
+                            android:orientation="vertical" />
 
                         <ImageView
                             android:id="@+id/rdy0vslju0t"
@@ -634,9 +514,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
                     android:layout_marginTop="-59dp"
-                    android:layout_weight="1"
                     android:text="Stroke Class eps.1\nWhen do you know that stroke can cause..."
-
                     android:textColor="#222222" />
             </LinearLayout>
 
@@ -660,7 +538,6 @@
                 android:src="@drawable/map_sample"
                 app:shapeAppearanceOverlay="@style/cr18" />
 
-
             <LinearLayout
                 android:id="@+id/rcepmz850us8"
                 android:layout_width="match_parent"
@@ -674,7 +551,6 @@
                 android:paddingTop="14dp"
                 android:paddingBottom="4dp">
 
-
                 <LinearLayout
                     android:id="@+id/rzylex2q4zhr"
                     android:layout_width="match_parent"
@@ -685,14 +561,12 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
-
                     <ImageView
                         android:id="@+id/rxo0ixkggus"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:scaleType="fitXY"
                         android:src="@mipmap/ic_launcher" />
-
 
                     <LinearLayout
                         android:id="@+id/rmg43d91oqg"
@@ -701,9 +575,7 @@
                         android:layout_weight="1"
                         android:clipChildren="false"
                         android:clipToPadding="false"
-                        android:orientation="vertical">
-
-                    </LinearLayout>
+                        android:orientation="vertical" />
 
                     <ImageView
                         android:id="@+id/r83bmsn9tfwm"
@@ -729,16 +601,13 @@
                         android:scaleType="fitXY"
                         android:src="@mipmap/ic_launcher" />
 
-
                     <ImageView
                         android:id="@+id/rl0u5bowrqbm"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:scaleType="fitXY"
                         android:src="@mipmap/ic_launcher" />
-
                 </LinearLayout>
-
 
                 <LinearLayout
                     android:id="@+id/rj28kua2l6us"
@@ -749,7 +618,6 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
-
                     <TextView
                         android:id="@+id/r4jb6lcop7tu"
                         android:layout_width="wrap_content"
@@ -758,7 +626,6 @@
                         android:text="Home"
                         android:textColor="#3A3A3A"
                         android:textSize="11sp" />
-
 
                     <TextView
                         android:id="@+id/rnvqmziu1dc"
@@ -778,7 +645,6 @@
                         android:textColor="#3A3A3A"
                         android:textSize="11sp" />
 
-
                     <TextView
                         android:id="@+id/rr4emmppkdn"
                         android:layout_width="wrap_content"
@@ -788,7 +654,6 @@
                         android:textColor="#3A3A3A"
                         android:textSize="11sp" />
 
-
                     <TextView
                         android:id="@+id/rf7nuz67ap3v"
                         android:layout_width="match_parent"
@@ -797,13 +662,8 @@
                         android:text="Profile"
                         android:textColor="#3A3A3A"
                         android:textSize="11sp" />
-
                 </LinearLayout>
-
             </LinearLayout>
-
         </LinearLayout>
-
-    </ScrollView>
-
-</LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.capstone.edstroke.databinding.FragmentExerciseEndBinding
+import com.capstone.edstroke.view.dashboard.DashboardActivity
 import com.capstone.edstroke.view.main.MainActivity
 
 class ExerciseEndFragment : Fragment() {
@@ -24,7 +25,7 @@ class ExerciseEndFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.homeButton.setOnClickListener {
-            val intent = Intent(requireContext(), MainActivity::class.java)
+            val intent = Intent(requireContext(), DashboardActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(intent)
             requireActivity().finish()

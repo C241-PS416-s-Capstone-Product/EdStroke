@@ -37,14 +37,14 @@ class RiskExerciseHelper(
             when (exercise) {
                 "Shoulder Range of Motion" -> {
                     val model = FirebaseModelDownloader.getInstance()
-                        .getModel("exercise-trial-1", DownloadType.LOCAL_MODEL, conditions)
+                        .getModel("shoulderRange", DownloadType.LOCAL_MODEL, conditions)
                         .await()
                     val modelFile = model.file ?: throw IOException("Model file is null")
                     setupModel(modelFile)
                 }
                 "Mini-Lunge" -> {
                     val model = FirebaseModelDownloader.getInstance()
-                        .getModel("exercise-trial-1", DownloadType.LOCAL_MODEL, conditions)
+                        .getModel("miniLunge", DownloadType.LOCAL_MODEL, conditions)
                         .await()
                     val modelFile = model.file ?: throw IOException("Model file is null")
                     setupModel(modelFile)
