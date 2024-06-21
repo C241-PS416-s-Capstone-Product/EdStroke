@@ -65,6 +65,11 @@ class DashboardActivity : AppCompatActivity() {
             val intent = Intent(this, RiskScreeningActivity::class.java)
             startActivity(intent)
         }
+        binding.startExerciseButton.setOnClickListener {
+            val intent = Intent(this, RehabExerciseActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 
 

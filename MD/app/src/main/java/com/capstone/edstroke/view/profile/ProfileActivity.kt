@@ -31,6 +31,7 @@ class ProfileActivity : AppCompatActivity() {
         viewModel.getSession().observe(this) { user ->
             binding.txtEmail.text = user.email
             binding.txtUsername.text = user.username
+            binding.txtProfileUsername.text = user.username
         }
 
         binding.btnEdit.setOnClickListener {

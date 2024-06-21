@@ -7,5 +7,8 @@
     <color name="bounding_box_color">#FF9800</color>
     <color name="navy">#2D3D4F</color>
     <color name="blue">#007AFE</color>
-
+    <color name="selected_blue">#002BFF</color>
+    <color name="colorPrimary">#42b752</color>
+    <color name="colorPrimaryDark">#35b24f</color>
+    <color name="colorAccent">#51c569</color>
 </resources>

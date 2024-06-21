@@ -103,7 +103,7 @@ dependencies {
 
     implementation(libs.tasks.vision)
 
-//    implementation(libs.core)
+    implementation(libs.core)
 
     // Import the Firebase BoM
     implementation(platform(libs.firebase.bom))
@@ -115,5 +115,4 @@ dependencies {
     implementation(libs.circle.imageview)
     implementation(libs.simple.location)
     implementation(libs.google.direction.library)
-    implementation(libs.android.youtube.player)
 }

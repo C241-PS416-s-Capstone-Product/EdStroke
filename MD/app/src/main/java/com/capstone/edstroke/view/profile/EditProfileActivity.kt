@@ -1,5 +1,6 @@
 package com.capstone.edstroke.view.profile
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -9,6 +10,7 @@ import com.capstone.edstroke.R
 import com.capstone.edstroke.data.pref.UserModel
 import com.capstone.edstroke.databinding.ActivityEditProfileBinding
 import com.capstone.edstroke.view.ViewModelFactory
+import com.capstone.edstroke.view.dashboard.DashboardActivity
 import kotlinx.coroutines.flow.first
 
 class EditProfileActivity : AppCompatActivity() {
@@ -50,6 +52,11 @@ class EditProfileActivity : AppCompatActivity() {
                         )
                         Toast.makeText(this@EditProfileActivity, result.msg, Toast.LENGTH_SHORT)
                             .show()
+                        val intent = Intent(this@EditProfileActivity, DashboardActivity::class.java)
+                        intent.flags =
+                            Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                        startActivity(intent)
+                        finish()
                     } else {
                         Toast.makeText(this@EditProfileActivity, result.msg, Toast.LENGTH_SHORT)
                             .show()

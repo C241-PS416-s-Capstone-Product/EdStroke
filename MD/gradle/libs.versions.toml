@@ -85,7 +85,6 @@ common = { group = "com.google.mlkit", name = "common", version.ref = "common" }
 play-services-maps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "playServicesMaps" }
 simple-location = { module = "com.github.delight-im:Android-SimpleLocation", version.ref = "simpleLocation" }
 google-direction-library = { module = "com.akexorcist:googledirectionlibrary", version.ref = "googleDirectionLibrary" }
-android-youtube-player = { module = "com.pierfrancescosoffritti.androidyoutubeplayer:core", version.ref = "androidYoutubePlayer" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
