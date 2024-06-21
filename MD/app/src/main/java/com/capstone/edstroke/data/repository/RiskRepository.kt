@@ -2,6 +2,8 @@ package com.capstone.edstroke.data.repository
 
 import com.capstone.edstroke.data.pref.UserPreference
 import com.capstone.edstroke.data.request.RiskScreeningRequest
+import com.capstone.edstroke.data.response.AdviceResponse
+import com.capstone.edstroke.data.response.ErrorResponse
 import com.capstone.edstroke.data.response.PredictResponse
 import com.capstone.edstroke.data.response.RegisterResponse
 import com.capstone.edstroke.data.response.RiskScreeningResponse
@@ -18,6 +20,14 @@ class RiskRepository  private constructor(
             riskApiService.riskScreening(request)
         } catch (e: HttpException) {
             PredictResponse(result = e.message())
+        }
+    }
+
+    suspend fun getRiskAdvice(): AdviceResponse {
+        return try {
+            riskApiService.getRiskAdvice()
+        } catch (e: HttpException) {
+            AdviceResponse(errorMessage = e.message())
         }
     }
 
