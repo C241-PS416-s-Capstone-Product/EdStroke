@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.capstone.edstroke.data.repository.UserRepository
 import com.capstone.edstroke.di.Injection
+import com.capstone.edstroke.view.advice.AdviceViewModel
 import com.capstone.edstroke.view.login.LoginViewModel
 import com.capstone.edstroke.view.main.MainViewModel
 import com.capstone.edstroke.view.profile.ProfileViewModel
@@ -31,6 +32,9 @@ class ViewModelFactory(private val context: Context) : ViewModelProvider.Factory
                 }
                 modelClass.isAssignableFrom(RiskViewModel::class.java) ->{
                     RiskViewModel(Injection.provideRiskRepository(context)) as T
+                }
+                modelClass.isAssignableFrom(AdviceViewModel::class.java) ->{
+                    AdviceViewModel(Injection.provideRiskRepository(context)) as T
                 }
 
                 else -> throw IllegalArgumentException("unknown viewmodel class")

@@ -14,6 +14,7 @@ import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import com.capstone.edstroke.databinding.ActivityDashboardBinding
 import com.capstone.edstroke.view.ViewModelFactory
+import com.capstone.edstroke.view.advice.AdviceActivity
 import com.capstone.edstroke.view.main.MainViewModel
 import com.capstone.edstroke.view.maps.MapsActivity
 import com.capstone.edstroke.view.profile.ProfileActivity
@@ -69,7 +70,10 @@ class DashboardActivity : AppCompatActivity() {
             val intent = Intent(this, RehabExerciseActivity::class.java)
             startActivity(intent)
         }
-
+        binding.seeAdviceButton.setOnClickListener {
+            val intent = Intent(this, AdviceActivity::class.java)
+            startActivity(intent)
+        }
     }
 
 

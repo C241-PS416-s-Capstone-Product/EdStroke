@@ -73,4 +73,9 @@
     <string name="day_one_let_s_go_nlog_your_workout_now">Day One, Let\'s Go! \nLog Your Workout Now.</string>
     <string name="start_exercise_click_here">Start Exercise, Click Here!</string>
     <string name="exercise_1">Exercise 1</string>
+    <string name="stroke_advice">Stroke Advice</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="see_advice">See Advice</string>
+    <string name="dr_boyke">Dr. Boyke</string>
 </resources>
