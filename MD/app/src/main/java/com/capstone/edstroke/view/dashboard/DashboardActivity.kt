@@ -16,6 +16,7 @@ import com.capstone.edstroke.databinding.ActivityDashboardBinding
 import com.capstone.edstroke.view.ViewModelFactory
 import com.capstone.edstroke.view.main.MainViewModel
 import com.capstone.edstroke.view.profile.ProfileActivity
+import com.capstone.edstroke.view.risk_exercise.RehabExerciseActivity
 import com.capstone.edstroke.view.risk_screening.RiskScreeningActivity
 import com.capstone.edstroke.view.welcome.WelcomeActivity
 
@@ -61,6 +62,10 @@ class DashboardActivity : AppCompatActivity() {
         }
         binding.llRiskScreening.setOnClickListener {
             val intent = Intent(this, RiskScreeningActivity::class.java)
+            startActivity(intent)
+        }
+        binding.startExerciseButton.setOnClickListener {
+            val intent = Intent(this, RehabExerciseActivity::class.java)
             startActivity(intent)
         }
     }

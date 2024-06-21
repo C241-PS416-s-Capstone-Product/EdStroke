@@ -33,7 +33,7 @@ class ExercisePrepareFragment : Fragment() {
             "Shoulder Range of Motion" -> {
                 videoId = "rcS-_UI8YPo"
                 binding.titleTextView.text = "Shoulder Range of Motion"
-                binding.countTextView.text = "Repetitions Needed : 10"
+                binding.countTextView.text = "Repetitions Needed: 10"
                 binding.descriptionTextView.text =
                     "Gently raise arms overhead, then lower. \n" +
                             "Move arms out to sides, then back down. \n" +
@@ -43,7 +43,7 @@ class ExercisePrepareFragment : Fragment() {
             "Mini-Lunge" -> {
                 videoId = "R3YEDs3Y7MI"
                 binding.titleTextView.text = "Mini-Lunge"
-                binding.countTextView.text = "Repetitions Needed : 8"
+                binding.countTextView.text = "Repetitions Needed: 8"
                 binding.descriptionTextView.text =
                     "Stand with feet hip-width apart. \n" +
                             "Step one foot forward, bending both knees to lower your body. \n" +
