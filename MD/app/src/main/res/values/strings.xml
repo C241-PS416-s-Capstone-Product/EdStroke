@@ -49,4 +49,8 @@
     <string name="username_hint">Insert your username here</string>
     <string name="email_hint">Insert your email here</string>
     <string name="password_hint">Insert your password here</string>
+    <string name="exit_confirm">Exit Confirmation</string>
+    <string name="exit">Are you sure you want to quit?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>

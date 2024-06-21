@@ -18,7 +18,7 @@ class SignupActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignupBinding
 
     private val signupViewModel by viewModels<SignupViewModel> {
-        ViewModelFactory.getInstance(this)
+        ViewModelFactory(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -33,8 +33,11 @@ class SignupViewModel(private val repository: UserRepository) : ViewModel() {
                 val jsonInString = e.response()?.errorBody()?.string()
                 val errorBody = Gson().fromJson(jsonInString, ErrorResponse::class.java)
                 val errorMessage = errorBody.message
+
                 Log.d("RegisterError", errorMessage.toString())
             }
         }
     }
+
+
 }

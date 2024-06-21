@@ -15,11 +15,12 @@ import com.capstone.edstroke.R
 import com.capstone.edstroke.data.pref.UserModel
 import com.capstone.edstroke.databinding.ActivityLoginBinding
 import com.capstone.edstroke.view.ViewModelFactory
+import com.capstone.edstroke.view.dashboard.DashboardActivity
 import com.capstone.edstroke.view.main.MainActivity
 
 class LoginActivity : AppCompatActivity() {
     private val loginViewModel by viewModels<LoginViewModel> {
-        ViewModelFactory.getInstance(this)
+        ViewModelFactory(this)
     }
     private lateinit var binding: ActivityLoginBinding
 
@@ -48,20 +49,6 @@ class LoginActivity : AppCompatActivity() {
 
     private fun setupAction() {
         binding.loginButton.setOnClickListener {
-//            loginViewModel.saveSession(
-//                            UserModel(
-//                                "testing",
-//                                "10",
-//                                "testing@example.com",
-//                                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImlhdCI6MTcxODQ3OTYzNiwiZXhwIjoxNzE4NDgzMjM2fQ.Gshw9eB-Xgh_Q8xRGYaeD3VslRbciI1iccMrZFP36c4",
-//                                true
-//                            )
-//                        )
-//            val intent = Intent(this@LoginActivity, MainActivity::class.java)
-//            intent.flags =
-//                Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-//            startActivity(intent)
-//            finish()
             val username = binding.usernameEditText.text.toString()
             val password = binding.passwordEditText.text.toString()
             loginViewModel.login(username, password)
@@ -86,7 +73,7 @@ class LoginActivity : AppCompatActivity() {
                                 setTitle(getString(R.string.yeah))
                                 setMessage(getString(R.string.login_alert))
                                 setPositiveButton(getString(R.string.next)) { _, _ ->
-                                    val intent = Intent(context, MainActivity::class.java)
+                                    val intent = Intent(context, DashboardActivity::class.java)
                                     intent.flags =
                                         Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                                     startActivity(intent)

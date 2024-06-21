@@ -2,5 +2,7 @@
 <resources>
     <style name="br40">
         <item name="cornerSizeBottomRight">40dp</item>
+    </style> <style name="cr18">
+        <item name="cornerSize">18dp</item>
     </style>
 </resources>

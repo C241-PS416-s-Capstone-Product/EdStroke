@@ -27,7 +27,7 @@ import com.capstone.edstroke.view.welcome.WelcomeActivity
 class MainActivity : AppCompatActivity() {
 
     private val mainViewModel by viewModels<MainViewModel> {
-        ViewModelFactory.getInstance(this)
+        ViewModelFactory(this)
     }
 
     private lateinit var binding: ActivityMainBinding
@@ -86,6 +86,9 @@ class MainActivity : AppCompatActivity() {
                 showToast(getString(R.string.empty_image_warning))
             }
         }
+
+        binding.btnLogout.setOnClickListener { mainViewModel.logout() }
+
     }
 
     private fun startGallery() {
