@@ -34,6 +34,12 @@ tensorflowLiteSupport = "0.4.4"
 firebaseMlModeldownloaderKtx = "25.0.0"
 common = "18.10.0"
 circleImageview = "3.1.0"
+googleAndroidLibrariesMapsplatformSecretsGradlePlugin = "2.0.1"
+playServicesMaps = "18.1.0"
+simpleLocation = "v1.1.0"
+googleDirectionLibrary = "1.0.3"
+androidYoutubePlayer = "12.1.0"
+#compile 'com.github.delight-im:Android-SimpleLocation:v1.1.0'
 
 [libraries]
 androidx-camera-camera2 = { module = "androidx.camera:camera-camera2", version.ref = "cameraxVersion" }
@@ -72,8 +78,13 @@ tensorflow-lite-support = { group = "org.tensorflow", name = "tensorflow-lite-su
 firebase-ml-modeldownloader-ktx = { group = "com.google.firebase", name = "firebase-ml-modeldownloader-ktx", version.ref = "firebaseMlModeldownloaderKtx" }
 circle-imageview = { group = "de.hdodenhof", name = "circleimageview", version.ref = "circleImageview" }
 common = { group = "com.google.mlkit", name = "common", version.ref = "common" }
+play-services-maps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "playServicesMaps" }
+simple-location = { module = "com.github.delight-im:Android-SimpleLocation", version.ref = "simpleLocation" }
+google-direction-library = { module = "com.akexorcist:googledirectionlibrary", version.ref = "googleDirectionLibrary" }
+android-youtube-player = { module = "com.pierfrancescosoffritti.androidyoutubeplayer:core", version.ref = "androidYoutubePlayer" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+google-android-libraries-mapsplatform-secrets-gradle-plugin = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version.ref = "googleAndroidLibrariesMapsplatformSecretsGradlePlugin" }
 
