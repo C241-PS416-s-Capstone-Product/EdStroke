@@ -6,6 +6,7 @@ import android.os.Bundle
 import com.capstone.edstroke.R
 import com.capstone.edstroke.data.response.PredictResponse
 import com.capstone.edstroke.databinding.ActivityRiskResultBinding
+import com.capstone.edstroke.view.dashboard.DashboardActivity
 import com.capstone.edstroke.view.main.MainActivity
 import java.text.DecimalFormat
 import kotlin.text.*
@@ -28,7 +29,7 @@ class RiskResultActivity : AppCompatActivity() {
         }
 
         binding.btnBackDashboard.setOnClickListener {
-            val intent = Intent(this@RiskResultActivity, MainActivity::class.java)
+            val intent = Intent(this@RiskResultActivity, DashboardActivity::class.java)
             intent.flags =
                 Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(intent)
@@ -43,9 +44,13 @@ class RiskResultActivity : AppCompatActivity() {
     }
 
     private fun detailView(item: PredictResponse) {
-        val decimalFormat = DecimalFormat("#.##")
-        val formattedValue = decimalFormat.format(item.probability)
-        binding.tvRiskResult.text = formattedValue
+        val significantDigits = 4
+        val numberStr = item.probability.toString()
+        val eIndex = numberStr.indexOf('E')
+        val decimalPart = if (eIndex != -1) numberStr.substring(0, eIndex) else numberStr
+        val valueProbability = decimalPart.substring(0, significantDigits)
+
+        binding.tvRiskResult.text = "$valueProbability%"
     }
 
     companion object {

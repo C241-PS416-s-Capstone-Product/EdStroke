@@ -1,5 +1,6 @@
 package com.capstone.edstroke.view.profile
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -9,6 +10,7 @@ import com.capstone.edstroke.R
 import com.capstone.edstroke.data.pref.UserModel
 import com.capstone.edstroke.databinding.ActivityEditProfileBinding
 import com.capstone.edstroke.view.ViewModelFactory
+import com.capstone.edstroke.view.dashboard.DashboardActivity
 import kotlinx.coroutines.flow.first
 
 class EditProfileActivity : AppCompatActivity() {
@@ -34,29 +36,32 @@ class EditProfileActivity : AppCompatActivity() {
             val username = binding.edtUsername.text.toString()
             val email = binding.edtEmail.text.toString()
             viewModel.updateProfile(username, email)
-            viewModel.profileResult.observe(this) { result ->
-                Log.d("update result", "${result}")
-                result?.let {
-                    if (it.msg.isNullOrEmpty()) {
-
-                        viewModel.saveSession(
-                            UserModel(
-                                username = username,
-                                email = email,
-                                token = user.token,
-                                isLogin = true,
-                                userId = user.userId
-                            )
-                        )
-                        Toast.makeText(this@EditProfileActivity, result.msg, Toast.LENGTH_SHORT)
-                            .show()
-                    } else {
-                        Toast.makeText(this@EditProfileActivity, result.msg, Toast.LENGTH_SHORT)
-                            .show()
-
-                    }
-
+            viewModel.isError.observe(this) { errorMessage ->
+                if (!errorMessage.isNullOrEmpty()) {
+                    Toast.makeText(this, errorMessage.toString(), Toast.LENGTH_SHORT).show()
                 }
+            }
+            viewModel.profileResult.observe(this) { result ->
+
+                viewModel.saveSession(
+                    UserModel(
+                        username = username,
+                        email = email,
+                        token = user.token,
+                        isLogin = true,
+                        userId = user.userId
+                    )
+                )
+                Toast.makeText(this@EditProfileActivity, result.msg, Toast.LENGTH_SHORT)
+                    .show()
+
+                val intent = Intent(this@EditProfileActivity, DashboardActivity::class.java)
+                intent.flags =
+                    Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                startActivity(intent)
+                finish()
+
+
             }
 
 
