@@ -28,13 +28,14 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".view.risk_screening.RiskResultActivity"
-
+            android:exported="false" />
+        <activity
+            android:name=".view.risk_exercise.RehabExerciseActivity"
             android:exported="false" />
         <activity
             android:name=".view.profile.EditProfileActivity"
@@ -49,9 +50,6 @@
             android:exported="false" />
         <activity
             android:name=".view.result.ResultActivity"
-            android:exported="false" />
-        <activity
-            android:name=".view.camera.CameraActivity"
             android:exported="false" />
         <activity
             android:name=".view.welcome.WelcomeActivity"
