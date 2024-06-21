@@ -424,15 +424,32 @@
 
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/rc87hmn7dbj9"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="18dp"
+                android:layout_marginStart="17dp"
                 android:layout_marginBottom="14dp"
-                android:text="Stroke Advice"
-                android:textColor="#3A3A3A"
-                android:textSize="20sp" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/strokeAdviceTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/stroke_advice"
+                    android:textColor="#3A3A3A"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/seeAdviceButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:backgroundTint="@color/blue"
+                    android:text="@string/see_advice"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/rqgt8gry8ti"
@@ -489,13 +506,6 @@
                             android:clipChildren="false"
                             android:clipToPadding="false"
                             android:orientation="vertical" />
-
-                        <ImageView
-                            android:id="@+id/rdy0vslju0t"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:scaleType="fitXY"
-                            android:src="@mipmap/ic_launcher" />
                     </LinearLayout>
 
                     <TextView
