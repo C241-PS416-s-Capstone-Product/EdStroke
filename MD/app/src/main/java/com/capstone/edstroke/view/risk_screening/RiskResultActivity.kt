@@ -44,8 +44,7 @@ class RiskResultActivity : AppCompatActivity() {
     }
 
     private fun detailView(item: PredictResponse) {
-        val formattedValue = String.format("%.2f", item.probability)
-        binding.tvRiskResult.text = formattedValue
+        binding.tvRiskResult.text = item.probability.toString()
     }
 
     companion object {

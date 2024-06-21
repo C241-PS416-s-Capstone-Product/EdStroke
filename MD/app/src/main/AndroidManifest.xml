@@ -67,6 +67,9 @@
         <activity
             android:name=".view.main.MainActivity"
             android:exported="false" />
+        <activity
+            android:name=".view.risk_exercise.RehabExerciseActivity"
+            android:exported="false" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

@@ -37,31 +37,24 @@ class EditProfileActivity : AppCompatActivity() {
             val email = binding.edtEmail.text.toString()
             viewModel.updateProfile(username, email)
             viewModel.profileResult.observe(this) { result ->
-                Log.d("update result", "${result}")
                 result?.let {
-                    if (it.msg.isNullOrEmpty()) {
-
-                        viewModel.saveSession(
-                            UserModel(
-                                username = username,
-                                email = email,
-                                token = user.token,
-                                isLogin = true,
-                                userId = user.userId
-                            )
+                    viewModel.saveSession(
+                        UserModel(
+                            username = username,
+                            email = email,
+                            token = user.token,
+                            isLogin = true,
+                            userId = user.userId
                         )
-                        Toast.makeText(this@EditProfileActivity, result.msg, Toast.LENGTH_SHORT)
-                            .show()
-                        val intent = Intent(this@EditProfileActivity, DashboardActivity::class.java)
-                        intent.flags =
-                            Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                        startActivity(intent)
-                        finish()
-                    } else {
-                        Toast.makeText(this@EditProfileActivity, result.msg, Toast.LENGTH_SHORT)
-                            .show()
+                    )
+                    Toast.makeText(this@EditProfileActivity, result.msg, Toast.LENGTH_SHORT)
+                        .show()
 
-                    }
+                    val intent = Intent(this@EditProfileActivity, DashboardActivity::class.java)
+                    intent.flags =
+                        Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                    startActivity(intent)
+                    finish()
 
                 }
             }
